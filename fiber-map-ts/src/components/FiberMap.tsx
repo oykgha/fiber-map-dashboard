@@ -51,6 +51,46 @@ function smoothLineCoordinates(coords: [number, number][], iterations = 2): [num
   return current;
 }
 
+// Smooths a LineString/MultiLineString feature's geometry the same way
+// linesGeoJson does for rendering — shared so any code computing this
+// feature's stable id (via stableSegmentId) hashes the exact same geometry
+// linesGeoJson would, rather than the raw pre-smoothing coordinates.
+function smoothFeatureGeometry(geometry: GeoJSON.Geometry): GeoJSON.Geometry {
+  if (geometry.type === 'LineString') {
+    const coords = (geometry as GeoJSON.LineString).coordinates as [number, number][];
+    return { type: 'LineString', coordinates: smoothLineCoordinates(coords, 2) };
+  } else if (geometry.type === 'MultiLineString') {
+    const multi = (geometry as GeoJSON.MultiLineString).coordinates as [number, number][][];
+    return { type: 'MultiLineString', coordinates: multi.map(c => smoothLineCoordinates(c, 2)) };
+  }
+  return geometry;
+}
+
+// The single authoritative way to resolve a geoData line feature's stable
+// id — prefers an id already stamped on the feature (e.g. a "Gambar Rute"
+// custom-drawn/retraced line) over recomputing one, and otherwise hashes
+// this feature's name + smoothed geometry exactly like linesGeoJson does,
+// so callers outside that useMemo (e.g. replacing a feature when a draw
+// finishes) resolve to the identical id.
+function resolveLineFeatureId(f: GeoJSON.Feature, fallbackName: string): string {
+  if (f.properties?.id) return f.properties.id as string;
+  const rawName = f.properties?.name || fallbackName;
+  return stableSegmentId(rawName, smoothFeatureGeometry(f.geometry));
+}
+
+export type CoreCapKey = 'kabel96' | 'kabel48' | 'kabel24' | 'kabel12' | 'kabelBelumSet';
+
+// Shared with the map legend's real-time length totals, so both agree on
+// exactly what counts as "96 Core" etc — a route only gets a real kabel*
+// classification once someone actually assigns a core count.
+function classifyCoreCapacity(technicalData: string | undefined): CoreCapKey {
+  if (technicalData?.includes('96 Core')) return 'kabel96';
+  if (technicalData?.includes('48 Core')) return 'kabel48';
+  if (technicalData?.includes('24 Core')) return 'kabel24';
+  if (technicalData?.includes('12 Core')) return 'kabel12';
+  return 'kabelBelumSet';
+}
+
 // Helper to slice sub-segment along cable geometry from Point A to Point Z
 function sliceSubSegmentCoords(
   coords: [number, number][],
@@ -299,7 +339,9 @@ export const FiberMap: React.FC = () => {
     activeRouteView,
     mapPickerState,
     setMapPickerState,
-    updateTrayTarget
+    updateTrayTarget,
+    deleteKmzFileRequest,
+    finalizeKmzFileDeletion
   } = useAppStore(useShallow((state) => ({
     nodes: state.nodes,
     setNodes: state.setNodes,
@@ -341,7 +383,9 @@ export const FiberMap: React.FC = () => {
     activeRouteView: state.activeRouteView,
     mapPickerState: state.mapPickerState,
     setMapPickerState: state.setMapPickerState,
-    updateTrayTarget: state.updateTrayTarget
+    updateTrayTarget: state.updateTrayTarget,
+    deleteKmzFileRequest: state.deleteKmzFileRequest,
+    finalizeKmzFileDeletion: state.finalizeKmzFileDeletion
   })));
 
   // State for Real Road Network Route from OSRM (Google Maps Style Routing)
@@ -700,6 +744,27 @@ export const FiberMap: React.FC = () => {
     }
   }, [flyToCoordinates]);
 
+  // KmzFilesPanel (mounted in App.tsx, outside FiberMap) has no access to
+  // this component's local geoData/nodes state, so a delete request comes
+  // in via the store and gets actually applied here — strips every node
+  // and geoData feature tagged with this sourceFile, then tells the store
+  // to clean up its own bookkeeping (knownKmzFiles/visibility/highlight)
+  // and clear the request. View-only, same as the "HAPUS SEMUA" button —
+  // doesn't touch anything already saved to the backend.
+  useEffect(() => {
+    if (!deleteKmzFileRequest) return;
+    const fileName = deleteKmzFileRequest;
+    setNodes(nodes.filter((n) => n.sourceFile !== fileName));
+    setGeoData((prev) => prev
+      ? { type: 'FeatureCollection', features: prev.features.filter((f) => f.properties?.sourceFile !== fileName) }
+      : prev);
+    finalizeKmzFileDeletion(fileName);
+    // Deliberately only depends on the request itself — this should fire
+    // exactly once per delete click, using nodes/setNodes/setGeoData/
+    // finalizeKmzFileDeletion as they are at that moment, not re-run
+    // whenever nodes happens to change for an unrelated reason.
+  }, [deleteKmzFileRequest]);
+
   // Handle OTDR Bending / Fault Spot fly-to camera
   useEffect(() => {
     if (activeOtdrFaultSpot && mapRef.current) {
@@ -737,7 +802,33 @@ export const FiberMap: React.FC = () => {
 
     const smoothedFeatures = rawLineFeatures.map((f, idx) => {
       const rawName = f.properties?.name || `SEGMENT CABLE ROUTE #${idx + 1}`;
-      const segRecord = segmentStoreMap[rawName] || segmentStoreMap[f.properties?.id];
+
+      // Smooth first, so the id below (when it has to be hashed) is hashed
+      // from the exact geometry that ends up rendered — the click handler
+      // reads the id straight off this feature's properties (see below),
+      // so hashing the pre-smoothing geometry here would never match a
+      // feature that DOES need a fresh hash.
+      const smoothedGeometry = smoothFeatureGeometry(f.geometry);
+
+      // Look up by the geometry-derived stable id FIRST, not by rawName —
+      // many raw KMZ cable lines share the same generic placeholder name
+      // ("Untitled Path"), so a name-first lookup made every line sharing
+      // that name resolve to whichever ONE of them was most recently
+      // edited, meaning setting one route's core capacity visually
+      // recolored every other same-named route too. The stable id hashes
+      // in this line's own geometry, so distinct physical cables never
+      // collide even when their raw KMZ names do. A feature that already
+      // carries an explicit id (e.g. a "Gambar Rute" custom-drawn/retraced
+      // line) keeps that id rather than getting a fresh geometry hash —
+      // see resolveLineFeatureId.
+      const featureId = f.properties?.id || stableSegmentId(rawName, smoothedGeometry);
+      // No name-based fallback here — see getOrCreateSegmentData in
+      // useAppStore.ts for why a name lookup is unsafe when many distinct
+      // lines share a generic placeholder name. A line that's never been
+      // individually touched correctly falls through to no record (and
+      // thus "kabelBelumSet") rather than borrowing another same-named
+      // line's data.
+      const segRecord = segmentStoreMap[featureId];
       const hasSor = !!(segRecord && segRecord.sorFiles && segRecord.sorFiles.length > 0);
       // Compare by the segment's real id (via segRecord), not rawName —
       // many raw KMZ cable lines share the same generic placeholder name
@@ -757,13 +848,7 @@ export const FiberMap: React.FC = () => {
       // color based on array position — visually indistinguishable from a
       // route that genuinely had that core count set. Unset routes now get
       // their own distinct "kabelBelumSet" category instead of a fake one.
-      let coreCapKey: 'kabel96' | 'kabel48' | 'kabel24' | 'kabel12' | 'kabelBelumSet' = 'kabelBelumSet';
-      if (segRecord?.technicalData) {
-        if (segRecord.technicalData.includes('96 Core')) coreCapKey = 'kabel96';
-        else if (segRecord.technicalData.includes('48 Core')) coreCapKey = 'kabel48';
-        else if (segRecord.technicalData.includes('24 Core')) coreCapKey = 'kabel24';
-        else if (segRecord.technicalData.includes('12 Core')) coreCapKey = 'kabel12';
-      }
+      const coreCapKey = classifyCoreCapacity(segRecord?.technicalData);
 
       const isDimmedByHighlight = !!highlightedKmzFile && f.properties?.sourceFile !== highlightedKmzFile;
 
@@ -772,33 +857,24 @@ export const FiberMap: React.FC = () => {
         hasSor,
         isSelected,
         coreCapacity: coreCapKey,
-        isDimmedByHighlight
+        isDimmedByHighlight,
+        // Carried as a plain property so the click handler can read it
+        // directly instead of recomputing stableSegmentId from whatever
+        // geometry queryRenderedFeatures() hands back. MapLibre internally
+        // tiles GeoJSON sources for rendering, and queryRenderedFeatures
+        // can return a tile-clipped fragment of a line's geometry rather
+        // than the full original — hashing that fragment produces a
+        // different id than this one, depending on exactly where the line
+        // was clicked. Properties survive tile-clipping intact; geometry
+        // doesn't, so this is the only reliable way to carry the id through.
+        id: featureId
       };
 
-      if (f.geometry.type === 'LineString') {
-        const origCoords = (f.geometry as GeoJSON.LineString).coordinates as [number, number][];
-        const smoothedCoords = smoothLineCoordinates(origCoords, 2);
-        return {
-          ...f,
-          properties: featureProps,
-          geometry: {
-            type: 'LineString',
-            coordinates: smoothedCoords
-          }
-        };
-      } else if (f.geometry.type === 'MultiLineString') {
-        const origMulti = (f.geometry as GeoJSON.MultiLineString).coordinates as [number, number][][];
-        const smoothedMulti = origMulti.map(c => smoothLineCoordinates(c, 2));
-        return {
-          ...f,
-          properties: featureProps,
-          geometry: {
-            type: 'MultiLineString',
-            coordinates: smoothedMulti
-          }
-        };
-      }
-      return { ...f, properties: featureProps };
+      return {
+        ...f,
+        properties: featureProps,
+        geometry: smoothedGeometry
+      };
     });
 
     // FILTER OUT CABLE FEATURES WHEN THEIR MAP FILTER IS UNCHECKED, OR WHEN
@@ -816,6 +892,37 @@ export const FiberMap: React.FC = () => {
       features: activeLineFeatures
     } as GeoJSON.FeatureCollection;
   }, [geoData, segmentStoreMap, selectedSegment, selectedSegments, mapFilters, kmzFileVisibility, highlightedKmzFile]);
+
+  // Real-time total length per core-capacity category, for the map legend's
+  // badges. Previously the legend only summed segmentStoreMap entries
+  // (populated lazily — only lines someone has actually clicked) and fell
+  // back to a hardcoded placeholder number (e.g. "14250 m") whenever
+  // nothing had been clicked yet for a category, showing fake data most of
+  // the time. This instead walks every line actually on the map — the same
+  // full set linesGeoJson draws from before its visibility filter — so the
+  // numbers reflect reality regardless of what's been individually opened,
+  // and update live as core capacities get assigned.
+  const cableLengthMeters = useMemo(() => {
+    const totals: Record<CoreCapKey, number> = {
+      kabel96: 0, kabel48: 0, kabel24: 0, kabel12: 0, kabelBelumSet: 0
+    };
+    if (!geoData) return totals;
+    geoData.features
+      .filter(f => f.geometry.type === 'LineString' || f.geometry.type === 'MultiLineString')
+      .forEach((f, idx) => {
+        const id = resolveLineFeatureId(f, `SEGMENT CABLE ROUTE #${idx + 1}`);
+        const segRecord = segmentStoreMap[id];
+        const category = classifyCoreCapacity(segRecord?.technicalData);
+        totals[category] += calculateLineDistanceKm(f.geometry) * 1000;
+      });
+    return {
+      kabel96: Math.round(totals.kabel96),
+      kabel48: Math.round(totals.kabel48),
+      kabel24: Math.round(totals.kabel24),
+      kabel12: Math.round(totals.kabel12),
+      kabelBelumSet: Math.round(totals.kabelBelumSet)
+    };
+  }, [geoData, segmentStoreMap]);
 
   // Active Route Line GeoJSON
   const activeRouteGeoJson = useMemo(() => {
@@ -1161,11 +1268,38 @@ export const FiberMap: React.FC = () => {
             <button
               disabled={drawnGreenLineCoords.length < 2}
               onClick={() => {
-                const routeCoords = realRoadDrawnRoute?.coordinates && realRoadDrawnRoute.coordinates.length >= 2 
-                  ? realRoadDrawnRoute.coordinates 
+                const routeCoords = realRoadDrawnRoute?.coordinates && realRoadDrawnRoute.coordinates.length >= 2
+                  ? realRoadDrawnRoute.coordinates
                   : drawnGreenLineCoords;
                 const distanceKm = drawnCableDistanceMeters > 0 ? (drawnCableDistanceMeters / 1000) : undefined;
-                finishDrawingGreenLine(routeCoords, distanceKm);
+                const result = finishDrawingGreenLine(routeCoords, distanceKm);
+                if (result) {
+                  // finishDrawingGreenLine only updates segmentStoreMap (the
+                  // segment's data record) — it never touches geoData, which
+                  // is what actually drives the colored line rendered on the
+                  // map. Without this, a finished "Gambar Rute" draw just
+                  // vanishes the instant the pink preview line clears, and
+                  // setting a core capacity afterward has nothing to color.
+                  // Replace any existing feature for this segment id (a
+                  // retrace of an existing cable) or append a new one
+                  // (a route with no prior map feature, e.g. from Route
+                  // Builder), tagged with the same id so it keeps resolving
+                  // to the same segment record on every future click. The
+                  // original (pre-retrace) feature never had an explicit
+                  // properties.id, so a plain `properties.id !== result.id`
+                  // filter would miss it and leave a duplicate line behind —
+                  // resolveLineFeatureId recomputes what its id WOULD be
+                  // (same hash linesGeoJson uses) so it's matched correctly.
+                  setGeoData((prev) => {
+                    const newFeature: GeoJSON.Feature = {
+                      type: 'Feature',
+                      properties: { name: result.name, id: result.id, sourceFile: 'Gambar Rute Custom' },
+                      geometry: { type: 'LineString', coordinates: routeCoords }
+                    };
+                    const others = (prev?.features || []).filter((f) => resolveLineFeatureId(f, 'SEGMENT CABLE ROUTE') !== result.id);
+                    return { type: 'FeatureCollection', features: [...others, newFeature] };
+                  });
+                }
               }}
               className="px-4 py-1.5 bg-gradient-to-r from-pink-600 via-rose-500 to-fuchsia-600 hover:from-pink-500 hover:to-fuchsia-500 disabled:opacity-50 text-white text-xs font-mono font-extrabold rounded-xl border border-pink-300 transition-all shadow-[0_0_20px_rgba(255,0,127,0.6)]"
             >
@@ -1351,10 +1485,22 @@ export const FiberMap: React.FC = () => {
           const allLineFeatures = mapRef.current
             ? mapRef.current.getMap().queryRenderedFeatures(clickBox, { layers: ['fiber-line-normal', 'fiber-line-glow'] })
             : [];
+          // Resolve each queried feature back to its full, un-fragmented
+          // record in linesGeoJson by the id that was precomputed there —
+          // MapLibre internally tiles GeoJSON sources for rendering, so
+          // queryRenderedFeatures() can hand back a tile-clipped fragment
+          // of a line's geometry (fewer points, sometimes just a sliver)
+          // rather than its full geometry. Using that fragment to hash a
+          // fresh id, or to compute distance, would silently produce a
+          // different id / a too-short length depending on exactly where
+          // along the line the click landed. Reading the id already
+          // stamped onto properties sidesteps this entirely (properties
+          // survive tile-clipping intact), and linesGeoJson.features still
+          // holds the complete geometry for that id.
           const seenIds = new Set<string>();
           const distinctLineFeatures = allLineFeatures.filter(f => {
             const rawName = f.properties?.name || 'SEGMENT CABLE ROUTE';
-            const id = stableSegmentId(rawName, f.geometry);
+            const id = (f.properties?.id as string | undefined) || stableSegmentId(rawName, f.geometry);
             if (seenIds.has(id)) return false;
             seenIds.add(id);
             return true;
@@ -1363,8 +1509,10 @@ export const FiberMap: React.FC = () => {
           if (distinctLineFeatures.length > 0) {
             const candidates = distinctLineFeatures.map(f => {
               const rawName = f.properties?.name || 'SEGMENT CABLE ROUTE';
-              const distKm = calculateLineDistanceKm(f.geometry);
-              return getOrCreateSegmentData(stableSegmentId(rawName, f.geometry), rawName, distKm);
+              const id = (f.properties?.id as string | undefined) || stableSegmentId(rawName, f.geometry);
+              const fullFeature = linesGeoJson?.features.find((lf) => lf.properties?.id === id);
+              const distKm = calculateLineDistanceKm(fullFeature?.geometry ?? f.geometry);
+              return getOrCreateSegmentData(id, rawName, distKm);
             });
 
             setOverlappingSegments(candidates);
@@ -1645,7 +1793,7 @@ export const FiberMap: React.FC = () => {
       </Suspense>
 
       {/* Floating Layer Filter & Legend Control Panel */}
-      <MapFilterLegendPanel />
+      <MapFilterLegendPanel cableLengthMeters={cableLengthMeters} />
 
     </div>
   );

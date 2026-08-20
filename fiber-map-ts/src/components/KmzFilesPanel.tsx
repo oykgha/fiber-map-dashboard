@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
-import { FileStack, X, Eye, EyeOff, Sparkles, MapPin } from 'lucide-react';
+import { FileStack, X, Eye, EyeOff, Sparkles, MapPin, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const KmzFilesPanel: React.FC = () => {
@@ -13,6 +13,7 @@ export const KmzFilesPanel: React.FC = () => {
     toggleKmzFileVisibility,
     highlightedKmzFile,
     setHighlightedKmzFile,
+    requestDeleteKmzFile,
     nodes,
     sidebarOpen,
     theme
@@ -24,6 +25,7 @@ export const KmzFilesPanel: React.FC = () => {
     toggleKmzFileVisibility: state.toggleKmzFileVisibility,
     highlightedKmzFile: state.highlightedKmzFile,
     setHighlightedKmzFile: state.setHighlightedKmzFile,
+    requestDeleteKmzFile: state.requestDeleteKmzFile,
     nodes: state.nodes,
     sidebarOpen: state.sidebarOpen,
     theme: state.theme
@@ -122,6 +124,22 @@ export const KmzFilesPanel: React.FC = () => {
                     >
                       <Sparkles size={12} />
                       {isHighlighted ? 'DISOROTI' : 'SOROT'}
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        if (window.confirm(`Hapus semua node & jalur kabel dari "${fileName}" dari tampilan peta saat ini? (Refresh halaman akan memuat ulang file default jika ini salah satunya)`)) {
+                          requestDeleteKmzFile(fileName);
+                        }
+                      }}
+                      className={`flex items-center justify-center px-2.5 py-1.5 rounded-lg border transition-all shrink-0 ${
+                        isDark
+                          ? 'bg-slate-800 text-rose-400 border-slate-700 hover:bg-rose-950 hover:border-rose-500/50'
+                          : 'bg-slate-200 text-rose-600 border-slate-300 hover:bg-rose-50 hover:border-rose-400'
+                      }`}
+                      title="Hapus file ini dari tampilan peta (sementara, sampai di-refresh — tidak menghapus data yang sudah tersimpan)"
+                    >
+                      <Trash2 size={12} />
                     </button>
                   </div>
                 </div>

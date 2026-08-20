@@ -176,7 +176,7 @@ interface AppState {
   startDrawingGreenLine: (segmentId?: string) => void;
   addGreenLinePoint: (coord: [number, number]) => void;
   undoGreenLinePoint: () => void;
-  finishDrawingGreenLine: (customRouteCoords?: [number, number][], customDistanceKm?: number) => void;
+  finishDrawingGreenLine: (customRouteCoords?: [number, number][], customDistanceKm?: number) => { id: string; name: string } | null;
   cancelDrawingGreenLine: () => void;
 
   segmentPointPickerState: SegmentPointPickerState | null;
@@ -208,6 +208,17 @@ interface AppState {
   kmzFilesPanelOpen: boolean;
   setKmzFilesPanelOpen: (open: boolean) => void;
   toggleKmzFilesPanel: () => void;
+
+  // KmzFilesPanel lives outside FiberMap.tsx and has no access to its local
+  // geoData/nodes state, so deleting a file's nodes+routes from the map has
+  // to happen there. This field is the request; FiberMap.tsx watches it,
+  // performs the actual removal, then clears it back to null. Mirrors how
+  // pendingKmzImport already bridges the opposite direction (import).
+  deleteKmzFileRequest: string | null;
+  requestDeleteKmzFile: (fileName: string | null) => void;
+  // Called by FiberMap.tsx once it's actually removed the file's nodes and
+  // geoData features, to clean up the file's own bookkeeping entries.
+  finalizeKmzFileDeletion: (fileName: string) => void;
 
 
   nodes: NodeData[];
@@ -390,7 +401,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const coords = (customRouteCoords && customRouteCoords.length >= 2) ? customRouteCoords : state.drawnGreenLineCoords;
     if (coords.length < 2) {
       set({ isDrawingGreenLine: false, drawnGreenLineCoords: [], activeDrawingSegmentId: null });
-      return;
+      return null;
     }
 
     // Calculate total distance if not provided
@@ -410,8 +421,15 @@ export const useAppStore = create<AppState>((set, get) => ({
 
     const distMeters = Math.round(totalDist * 1000);
     const segId = state.activeDrawingSegmentId || `seg-green-${Date.now()}`;
-    const segName = state.selectedSegment?.name || `Jalur Kabel Real Maps (${distMeters.toLocaleString('id-ID')} m)`;
-    
+    // startDrawingGreenLine nulls out selectedSegment while drawing (to hide
+    // the modal), so reading state.selectedSegment here would always be
+    // null — pulling from segmentStoreMap instead preserves whatever
+    // customerTrunk/technicalData (core capacity!) was already set on this
+    // segment before the retrace, instead of silently wiping it back to
+    // defaults on every "Gambar Rute" edit.
+    const existingSeg = state.segmentStoreMap[segId];
+    const segName = existingSeg?.name || `Jalur Kabel Real Maps (${distMeters.toLocaleString('id-ID')} m)`;
+
     const pointA = `Point A (${coords[0][1].toFixed(4)}, ${coords[0][0].toFixed(4)})`;
     const pointZ = `Point Z (${coords[coords.length - 1][1].toFixed(4)}, ${coords[coords.length - 1][0].toFixed(4)})`;
 
@@ -419,12 +437,12 @@ export const useAppStore = create<AppState>((set, get) => ({
       id: segId,
       name: segName,
       lengthKm: parseFloat(totalDist.toFixed(2)),
-      customerTrunk: state.selectedSegment?.customerTrunk || 'Real Road Network Fiber Route',
-      technicalData: state.selectedSegment?.technicalData || 'Single-Mode G.652D, Real Maps Snapped',
+      customerTrunk: existingSeg?.customerTrunk || 'Real Road Network Fiber Route',
+      technicalData: existingSeg?.technicalData || 'Single-Mode G.652D, Real Maps Snapped',
       nodeA: pointA,
       nodeZ: pointZ,
       customDrawnGreenCoords: coords,
-      sorFiles: state.selectedSegment?.sorFiles || []
+      sorFiles: existingSeg?.sorFiles || []
     };
 
     set((s) => ({
@@ -438,6 +456,8 @@ export const useAppStore = create<AppState>((set, get) => ({
         [updatedSeg.name]: updatedSeg
       }
     }));
+
+    return { id: segId, name: segName };
   },
 
   cancelDrawingGreenLine: () => set({
@@ -499,7 +519,16 @@ export const useAppStore = create<AppState>((set, get) => ({
   segmentStoreMap: {},
   getOrCreateSegmentData: (id, name, lengthKm) => {
     const state = get();
-    const existing = state.segmentStoreMap[name] || state.segmentStoreMap[id];
+    // id-only lookup — must NOT fall back to name. Many raw KMZ cable lines
+    // share the same generic placeholder name ("Untitled Path"), and id is
+    // a hash of this specific line's name + geometry (stableSegmentId), so
+    // it's always resolvable without the name fallback for any line that's
+    // gone through the normal click/import flow. A name-first (or
+    // name-fallback) lookup here silently merges every distinct physical
+    // cable sharing that name into one shared record the instant any one
+    // of them is clicked — editing one's core capacity/technical data then
+    // edits all of them, since they're literally the same object.
+    const existing = state.segmentStoreMap[id];
     if (existing) return existing;
 
     const newSeg: FiberSegmentData = {
@@ -538,6 +567,18 @@ export const useAppStore = create<AppState>((set, get) => ({
   kmzFilesPanelOpen: false,
   setKmzFilesPanelOpen: (open) => set({ kmzFilesPanelOpen: open }),
   toggleKmzFilesPanel: () => set((state) => ({ kmzFilesPanelOpen: !state.kmzFilesPanelOpen })),
+
+  deleteKmzFileRequest: null,
+  requestDeleteKmzFile: (fileName) => set({ deleteKmzFileRequest: fileName }),
+  finalizeKmzFileDeletion: (fileName) => set((state) => {
+    const { [fileName]: _removedVisibility, ...restVisibility } = state.kmzFileVisibility;
+    return {
+      knownKmzFiles: state.knownKmzFiles.filter((f) => f !== fileName),
+      kmzFileVisibility: restVisibility,
+      highlightedKmzFile: state.highlightedKmzFile === fileName ? null : state.highlightedKmzFile,
+      deleteKmzFileRequest: null
+    };
+  }),
 
   theme: 'dark',
   toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),

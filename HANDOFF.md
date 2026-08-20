@@ -298,6 +298,137 @@ the UI actually persists.
   separate GPU compositor layers can itself cause a performance problem
   ("layer explosion"), so this was scoped to just the highest-concentration
   spot (114 markers) rather than applied everywhere on a hunch.
+  **Follow-up:** the actual root cause of the "laggy on Windows, fine on
+  Mac" reports turned out to be simpler and unrelated to any of the above —
+  the reporting user's Chrome had hardware acceleration fully disabled
+  (`chrome://gpu` showed Canvas/Compositing/Rasterization/WebGL all
+  "Software only"), confirmed by the driver info showing `Microsoft Basic
+  Render Driver` / `ANGLE_D3D11_WARP` active instead of their actual GPU.
+  Toggling hardware acceleration back on in Chrome settings resolved it
+  completely — a browser/OS setting, not a code issue. The `useShallow`,
+  marker-memoization, and `transform-gpu` changes above are still worth
+  keeping (they're genuine, correct optimizations), just weren't the fix
+  for that specific report.
+- **Cable-color mixing across same-named routes.** Many raw KMZ cable
+  lines share the same generic placeholder name ("Untitled Path" — 62 of
+  them in the default dataset). `getOrCreateSegmentData` in
+  `useAppStore.ts` looked up an existing record by **name before id**
+  (`segmentStoreMap[name] || segmentStoreMap[id]`), so the moment ANY
+  "Untitled Path" line was clicked, every other "Untitled Path" line
+  silently resolved to that exact same `FiberSegmentData` object the next
+  time it was touched — setting one route's core capacity visually
+  recolored every other same-named route too, and edited its customer/
+  technical data as if it were the same physical cable. Fixed by making
+  the lookup id-only (`segmentStoreMap[id]`, no name fallback) — `id` is
+  a hash of this specific line's own name + geometry, so distinct cables
+  never collide even when their names do. Also removed the equivalent
+  unsafe name-fallback from `linesGeoJson`'s per-feature color lookup in
+  `FiberMap.tsx` for the same reason.
+  While fixing this, found a second, deeper problem it depended on: the
+  click handler computed each line's id by hashing the geometry returned
+  from `map.queryRenderedFeatures()` — but MapLibre internally tiles
+  GeoJSON sources for rendering, and `queryRenderedFeatures()` can hand
+  back a **tile-clipped fragment** of a line's geometry rather than its
+  full original, depending on exactly where along the line the click
+  landed. Hashing a fragment produces a different id than hashing the
+  full geometry, so the "same" line could resolve to different ids on
+  different clicks. Fixed by having `linesGeoJson` stamp its own
+  precomputed id onto each feature's `properties.id` (properties survive
+  tile-clipping intact even though geometry doesn't) and having the click
+  handler read that property directly instead of recomputing a hash.
+  Verified with a direct logic-level test (seed two distinct "Untitled
+  Path" lines, set one's core capacity via the store, confirm only that
+  one line's rendered `coreCapacity` changed — before the fix all 62
+  lines flipped color, after the fix exactly 1 did) and end-to-end via
+  real Playwright clicks on the actual rendered map.
+- **"Gambar Rute" (draw/retrace a cable's physical path) never showed up
+  on the map, and silently wiped the segment's saved data.** Two bugs in
+  one flow:
+  1. `finishDrawingGreenLine` in `useAppStore.ts` only ever updated
+     `segmentStoreMap` (the segment's data record) — it never touched
+     `geoData` (the actual GeoJSON fed into the map's line layers). The
+     pink "drawing in progress" preview line disappears the instant you
+     hit "SIMPAN & TERAPKAN", and nothing permanent ever got added in its
+     place — the drawn cable simply vanished, and setting a core capacity
+     afterward had no rendered line left to color.
+  2. `startDrawingGreenLine` nulls `selectedSegment` while drawing (to
+     hide the modal), so `finishDrawingGreenLine` reading
+     `state.selectedSegment?.name/customerTrunk/technicalData` always saw
+     `undefined` — meaning every single "Gambar Rute" edit silently reset
+     the segment's name to a generic auto-generated one and wiped its
+     customer/technical data (including any core capacity already set)
+     back to defaults, even when just retracing an existing, already-
+     configured cable.
+  Fixed by: (a) reading the segment's prior data from
+  `segmentStoreMap[segId]` instead of the now-null `selectedSegment`, so
+  retracing preserves the name/customer/technical data that was already
+  there; (b) having `finishDrawingGreenLine` return the resulting
+  `{id, name}`, and having the "SIMPAN & TERAPKAN" button handler in
+  `FiberMap.tsx` use that to merge a real feature into `geoData` —
+  replacing the original (pre-retrace) feature if one exists so you don't
+  end up with two overlapping lines, or adding a new one if this route
+  never had a map feature (e.g. one built via Route Builder). Matching the
+  original feature to remove reuses the same id-resolution logic as the
+  color-bleeding fix above (`resolveLineFeatureId`), since the original
+  feature never carried an explicit id either. Verified live: clicked an
+  existing cable named "XCC GAPLEK - POP TBS", drew a new path over it,
+  saved — confirmed the feature count in `geoData` stayed the same (98,
+  meaning replace not duplicate), the segment kept its original name
+  instead of becoming "Jalur Kabel Real Maps (...)", the new line appeared
+  in `linesGeoJson` immediately, and setting "48 Core" afterward correctly
+  recolored it.
+- **Map legend's cable-length badges were mostly fake numbers.** The
+  legend (`MapFilterLegendPanel.tsx`) computed each core-capacity
+  category's total length by summing only `segmentStoreMap` entries —
+  which is populated lazily, only for lines someone has actually clicked —
+  and fell back to a **hardcoded placeholder** (`14250`/`28400`/`19150`/
+  `8500` meters) whenever nothing had been clicked yet for that category.
+  On a fresh page load, every badge showed these made-up numbers with no
+  relationship to what was actually on the map. Fixed by adding a
+  `cableLengthMeters` calculation in `FiberMap.tsx` (new `CoreCapKey`
+  type + `classifyCoreCapacity` helper, shared with `linesGeoJson` so
+  both agree on what counts as "96 Core" etc.) that walks every line
+  feature actually in `geoData` — not just previously-clicked ones — and
+  sums each one's real geometry-derived length by category, passed down
+  as a prop. Verified live: fresh load showed `0 m` for every core
+  category and the full real total (`335,340 m`) under "Belum Diset"
+  (unset) instead of the old fake numbers; clicking a line and assigning
+  "48 Core" moved exactly that line's length (`10,230 m`) from "Belum
+  Diset" to "Kabel 48 Core" in real time, with the two numbers still
+  summing to the original total.
+
+## New feature: delete a loaded KMZ file from the map
+
+The left sidebar's "File KMZ" panel (`KmzFilesPanel.tsx`) already had
+per-file hide/highlight toggles; added a delete (trash icon) button per
+file, next to those, with a confirm dialog matching the existing "HAPUS
+SEMUA" button's wording/pattern. Removes every node and every `geoData`
+line feature tagged with that file's `sourceFile`, and drops the file
+from `knownKmzFiles`/`kmzFileVisibility`/clears `highlightedKmzFile` if it
+was the one highlighted.
+
+Same scope as "HAPUS SEMUA": **view-only**, doesn't touch anything already
+saved to the backend (segments/nodes/`.sor` files for that file's routes
+stay in Postgres — a refresh reloads the 5 default KMZ files from scratch
+regardless, so deleting one of those just removes it until the next
+refresh; a custom-uploaded file wouldn't come back at all, per the
+existing "custom KMZ imports don't survive a refresh" gap noted above).
+
+Implementation note: `KmzFilesPanel` is mounted in `App.tsx`, outside
+`FiberMap.tsx`, so it has no direct access to `geoData`/`setGeoData`
+(local state inside `FiberMap`). Bridged the same way `pendingKmzImport`
+already bridges the opposite direction (import): `KmzFilesPanel` calls
+`requestDeleteKmzFile(fileName)`, which just sets a
+`deleteKmzFileRequest` field in the store; a `useEffect` in `FiberMap.tsx`
+watches that field, does the actual `nodes`/`geoData` filtering, then
+calls `finalizeKmzFileDeletion(fileName)` to clean up the store's own
+bookkeeping and clear the request.
+
+Verified live: before deleting `DWD.kmz`, node count was 114 (62 of them
+DWD.kmz's); after clicking delete + confirming, node count dropped to 52
+(exactly DWD.kmz's 62 removed), the other files' node counts (e.g. POP.kmz
+at 18) were untouched, and `DWD.kmz` correctly disappeared from
+`knownKmzFiles` while the other 4 remained.
 
 ## What's still open
 

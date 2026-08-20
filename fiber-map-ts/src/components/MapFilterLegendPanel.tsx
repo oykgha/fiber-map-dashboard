@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppStore, type MapFilters } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
+import type { CoreCapKey } from './FiberMap';
 import {
   Layers, ChevronDown, ChevronUp, Radio, Box, Server,
   Hexagon, Check, Eye, EyeOff, RotateCcw
@@ -16,15 +17,20 @@ interface FilterConfigItem {
   category: 'node' | 'cable';
 }
 
-export const MapFilterLegendPanel: React.FC = () => {
+interface MapFilterLegendPanelProps {
+  // Real total length (in meters) per core-capacity category, computed from
+  // every line actually on the map — see FiberMap.tsx's cableLengthMeters.
+  cableLengthMeters: Record<CoreCapKey, number>;
+}
+
+export const MapFilterLegendPanel: React.FC<MapFilterLegendPanelProps> = ({ cableLengthMeters }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(true);
-  const { mapFilters, toggleMapFilter, resetMapFilters, setMapFilters, nodes, segmentStoreMap, theme } = useAppStore(useShallow((state) => ({
+  const { mapFilters, toggleMapFilter, resetMapFilters, setMapFilters, nodes, theme } = useAppStore(useShallow((state) => ({
     mapFilters: state.mapFilters,
     toggleMapFilter: state.toggleMapFilter,
     resetMapFilters: state.resetMapFilters,
     setMapFilters: state.setMapFilters,
     nodes: state.nodes,
-    segmentStoreMap: state.segmentStoreMap,
     theme: state.theme
   })));
   const isDark = theme === 'dark';
@@ -36,29 +42,11 @@ export const MapFilterLegendPanel: React.FC = () => {
   const hhCount = nodes.filter(n => n.type === 'HH').length;
   const poleCount = nodes.filter(n => n.type === 'Tiang').length;
 
-  // Calculate live total asset distance in Meters (m) for cable categories
-  const segmentList = Object.values(segmentStoreMap);
-  const getCableMeters = (coreName: string, defaultMeters: number) => {
-    const matchingSegments = segmentList.filter(s => (s.technicalData || '').includes(coreName));
-    if (matchingSegments.length === 0) return defaultMeters;
-    const totalKm = matchingSegments.reduce((sum, s) => sum + (s.lengthKm || 0), 0);
-    return Math.round(totalKm * 1000);
-  };
-
-  const k96Meters = getCableMeters('96 Core', 14250);
-  const k48Meters = getCableMeters('48 Core', 28400);
-  const k24Meters = getCableMeters('24 Core', 19150);
-  const k12Meters = getCableMeters('12 Core', 8500);
-
-  // Routes with no core count assigned yet — anything whose technicalData
-  // doesn't mention a core count at all (covers both truly-untouched
-  // imports and segments explicitly left at "Belum Set" via the chips).
-  const CORE_LABELS = ['96 Core', '48 Core', '24 Core', '12 Core'];
-  const belumSetMeters = Math.round(
-    segmentList
-      .filter((s) => !CORE_LABELS.some((label) => (s.technicalData || '').includes(label)))
-      .reduce((sum, s) => sum + (s.lengthKm || 0), 0) * 1000
-  );
+  const k96Meters = cableLengthMeters.kabel96;
+  const k48Meters = cableLengthMeters.kabel48;
+  const k24Meters = cableLengthMeters.kabel24;
+  const k12Meters = cableLengthMeters.kabel12;
+  const belumSetMeters = cableLengthMeters.kabelBelumSet;
 
   // Toggle all filters on/off
   const isAllActive = Object.values(mapFilters).every(Boolean);
