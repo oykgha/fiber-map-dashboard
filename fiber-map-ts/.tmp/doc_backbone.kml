@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>backbone.kmz</name>
+	<Style id="icon-ci-1-labelson">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="icon-ci-1-labelson0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-ci-1-labelson21</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-ci-1-labelson1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="icon-ci-1-labelson00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-ci-1-labelson20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-ci-1-labelson4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="icon-ci-1-labelson01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-ci-1-labelson22</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-ci-1-labelson</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="icon-ci-1-labelson02">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-ci-1-labelson2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-ci-1-labelson3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="icon-ci-1-labelson1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson2">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson20">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson21">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson22">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson3">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="icon-ci-1-labelson4">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon-1_61">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon-1_61</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon-1_61</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_square">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_square</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_square</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_track">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_track</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_track</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin1">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/square.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>0.945455</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/square.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sh_icon-1_61">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sh_square">
+		<IconStyle>
+			<scale>0.945455</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/square.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_track">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/track.png</href>
+			</Icon>
+			<hotSpot x="32" y="32" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>4.407</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>4.5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin1">
+		<LineStyle>
+			<color>ff44af62</color>
+			<width>4.5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin20">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>4.5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin3">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>4.5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_icon-1_61">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>files/icon-1_61_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sn_square">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/square.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_track">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/track.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin0">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin1">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin20">
+		<LineStyle>
+			<color>ff44af62</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin3">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>2.938</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>backbone</name>
+		<open>1</open>
+		<Folder>
+			<name>XCC ANTAM - XCC TANJUNG BARAT</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>XCC ANTAM</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8508671479875</longitude>
+					<latitude>-6.304283479956511</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0006121347521816374</heading>
+					<tilt>22.21079275129716</tilt>
+					<range>358.9322148551664</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson02</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.850392,-6.304047,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC ANTAM - XCC TANJUNG BARAT</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.8503903754917,-6.304027181894627,0 106.8503888380825,-6.304132309521255,0 106.850454480225,-6.304183830197331,0 106.8504864594295,-6.304249141101214,0 106.8505008003572,-6.304330174435512,0 106.850489765472,-6.304374277832978,0 106.8504539593158,-6.304421299121115,0 106.850406288673,-6.304476488690936,0 106.8503154952534,-6.304481977674241,0 106.8503169792465,-6.304593366567721,0 106.8498849935471,-6.304569295154881,0 106.8485592821247,-6.304506350068759,0 106.8460074167501,-6.304301512912042,0 106.843246641212,-6.303922301025588,0 106.8424598398828,-6.303840549667155,0 106.8411300710922,-6.30364323288747,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>HH-01-ANTTJB-NAGA SWALAYAN</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8487215199087</longitude>
+					<latitude>-6.303698035410195</latitude>
+					<altitude>0</altitude>
+					<heading>0.01330749123547963</heading>
+					<tilt>30.92321840282892</tilt>
+					<range>945.2511110192612</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin8</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.847503,-6.304424999999999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-02-ANTTJB-TELKOMSEL</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8461281688611</longitude>
+					<latitude>-6.30368689976234</latitude>
+					<altitude>0</altitude>
+					<heading>0.01359228417176422</heading>
+					<tilt>30.92321840282893</tilt>
+					<range>945.2511110204265</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin8</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.845662,-6.304224,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-03-ANTTJB-GANG SAWO</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8461281688611</longitude>
+					<latitude>-6.30368689976234</latitude>
+					<altitude>0</altitude>
+					<heading>0.01359228417176422</heading>
+					<tilt>30.92321840282893</tilt>
+					<range>945.2511110204265</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin8</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.842061,-6.303766999999999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC TANJUNG BARAT</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8415863745492</longitude>
+					<latitude>-6.303432775448331</latitude>
+					<altitude>0</altitude>
+					<heading>-0.002837205724495868</heading>
+					<tilt>18.95957010907872</tilt>
+					<range>229.8900788569891</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.841126,-6.303640000000001,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC TANJUNG BARAT - XCC DEPTAN</name>
+			<open>1</open>
+			<Placemark>
+				<name>XCC TANJUNG BARAT</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.8415863745492</longitude>
+					<latitude>-6.303432775448331</latitude>
+					<altitude>0</altitude>
+					<heading>-0.002837205724495868</heading>
+					<tilt>18.95957010907872</tilt>
+					<range>229.8900788569891</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.841126,-6.303640000000001,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC TANJUNG BARAT - XCC DEPTAN</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.841124756877,-6.30364154781375,0 106.8400696068749,-6.303432374665741,0 106.8398708560217,-6.30355147287422,0 106.8398459258858,-6.303636004901328,0 106.8394357524767,-6.303539006348075,0 106.8394485018725,-6.303419602423453,0 106.8393599719113,-6.30326581948273,0 106.8392631226972,-6.303219790077061,0 106.8385139409498,-6.303001536875751,0 106.8377423726303,-6.302716889489997,0 106.8372301827899,-6.302455461048881,0 106.8369905514093,-6.302301407035259,0 106.8367392583714,-6.302147509295017,0 106.8362007843071,-6.30181677005427,0 106.8357843147763,-6.301639188030718,0 106.8344355496305,-6.300726378086978,0 106.8330564924408,-6.299805183936898,0 106.8322211649278,-6.299248189825749,0 106.8319666237691,-6.299069473646433,0 106.831196351171,-6.29858680064205,0 106.8302526301323,-6.298027167160358,0 106.8284572111088,-6.297094485855321,0 106.8267674789091,-6.296194201933358,0 106.8247843845394,-6.295179028910696,0 106.8240493899582,-6.294851253598384,0 106.8225961854269,-6.294282111003972,0 106.8224809242552,-6.294348971454228,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>HH-18-TJBDEP-KOPI</name>
+				<LookAt>
+					<longitude>106.795362</longitude>
+					<latitude>-6.292766</latitude>
+					<altitude>0</altitude>
+					<heading>7.752602036067322e-15</heading>
+					<tilt>0</tilt>
+					<range>1000.000000000232</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.840252,-6.303452,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-17-TJBDEP-STIKER</name>
+				<LookAt>
+					<longitude>106.8326051415586</longitude>
+					<latitude>-6.298729698367107</latitude>
+					<altitude>0</altitude>
+					<heading>-0.006489855911904195</heading>
+					<tilt>28.27484523576839</tilt>
+					<range>597.6456890516877</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.838593,-6.303032,2.01</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-16-TJBDEP-OFFICE18</name>
+				<LookAt>
+					<longitude>106.8401185607479</longitude>
+					<latitude>-6.302737397611795</latitude>
+					<altitude>0</altitude>
+					<heading>-0.007314527264208928</heading>
+					<tilt>28.2765701597385</tilt>
+					<range>1003.037322315767</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.831351,-6.298734,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-15-TJBDEP-OLEOS</name>
+				<LookAt>
+					<longitude>106.8401185607479</longitude>
+					<latitude>-6.302737397611795</latitude>
+					<altitude>0</altitude>
+					<heading>-0.007314527264208928</heading>
+					<tilt>28.2765701597385</tilt>
+					<range>1003.037322315767</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.829094,-6.297374,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-14-TJBDEP-KEBAGUSAN</name>
+				<LookAt>
+					<longitude>106.8315152384722</longitude>
+					<latitude>-6.298184662248885</latitude>
+					<altitude>0</altitude>
+					<heading>-0.00648390643688584</heading>
+					<tilt>27.69995136940982</tilt>
+					<range>3438.245798957967</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.827486,-6.296594,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>HH-13-TJBDEP-SPBU</name>
+				<LookAt>
+					<longitude>106.8250886971126</longitude>
+					<latitude>-6.29543016166637</latitude>
+					<altitude>0</altitude>
+					<heading>-0.006063553294115588</heading>
+					<tilt>26.72789980872759</tilt>
+					<range>1067.061184329073</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_square</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.824959,-6.295281,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC DEPTAN</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.82236324867</longitude>
+					<latitude>-6.29434305676098</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0003751789259945313</heading>
+					<tilt>29.06866669784434</tilt>
+					<range>194.3666749597351</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson0</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.82249,-6.294341999999999,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC DEPTAN - XCC FATMAWATI</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>XCC DEPTAN</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.82236324867</longitude>
+					<latitude>-6.29434305676098</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0003751789259945313</heading>
+					<tilt>29.06866669784434</tilt>
+					<range>194.3666749597351</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson0</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.82249,-6.294341999999999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC DEPTAN - XCC FATMAWATI</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.822493763663,-6.294340321722681,0 106.8223540151809,-6.294397619607643,0 106.8220977592292,-6.294308624857607,0 106.8221238737408,-6.294205286797797,0 106.822047582165,-6.294120502095973,0 106.8218931551431,-6.294046288719807,0 106.8216504075375,-6.293918245492431,0 106.8211072164425,-6.293693751723412,0 106.8204295779804,-6.29343608145889,0 106.8194813956272,-6.293112750877794,0 106.8188074038473,-6.29291618220913,0 106.8182702879187,-6.292821620760416,0 106.8179545144328,-6.29278761890858,0 106.8172252996391,-6.29271216089395,0 106.8167546327871,-6.292689981969864,0 106.8165842884538,-6.292734721629989,0 106.8165105701873,-6.292844133665899,0 106.8164903966505,-6.292887065777412,0 106.816308173266,-6.292862712861993,0 106.8163122545595,-6.29276961805919,0 106.8162775805757,-6.292712644354427,0 106.8161185562625,-6.292696733339075,0 106.8148419145924,-6.292570347932009,0 106.8140931976855,-6.292530746285516,0 106.8127269381607,-6.292460536584604,0 106.8117672194232,-6.292402644687993,0 106.8110782886771,-6.292416790023265,0 106.8095497786586,-6.292458719549169,0 106.8093976839197,-6.292549829164734,0 106.8092454418335,-6.292615975915871,0 106.8088643769359,-6.29269395851073,0 106.8084618552166,-6.292726170341485,0 106.8078126147034,-6.292761303910698,0 106.8066730886956,-6.292768172723207,0 106.805915011015,-6.292746409189102,0 106.8046996121862,-6.292727980607468,0 106.8035824934692,-6.292699786392396,0 106.8024340221375,-6.2926875085307,0 106.801182447801,-6.29268811936417,0 106.7997687404299,-6.292649990487189,0 106.7981171830133,-6.292614862807832,0 106.7966712886896,-6.292595809971994,0 106.7956783477085,-6.292576434848374,0 106.7956460702821,-6.29264218758797,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>XCC FATMAWATI</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.7958099242038</longitude>
+					<latitude>-6.292521670860763</latitude>
+					<altitude>0</altitude>
+					<heading>0.002652194147393092</heading>
+					<tilt>30.00077647930438</tilt>
+					<range>172.9487612114258</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson00</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.79566,-6.292649,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC FATMAWATI - POP TBS</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>XCC FATMAWATI</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.7958099242038</longitude>
+					<latitude>-6.292521670860763</latitude>
+					<altitude>0</altitude>
+					<heading>0.002652194147393092</heading>
+					<tilt>30.00077647930438</tilt>
+					<range>172.9487612114258</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson00</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.79566,-6.292649,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC FATMAWATI - POP TBS</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin0</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.7956551369933,-6.292644653039683,0 106.7955170696033,-6.29265965760685,0 106.7953760624624,-6.292733165894595,0 106.7953180383422,-6.292847915245181,0 106.795027977116,-6.29284032784316,0 106.7949140409383,-6.292686247683895,0 106.7947739167848,-6.292661593861724,0 106.794525874979,-6.29264009650853,0 106.7942796395043,-6.292623441341903,0 106.7938680394023,-6.292598290603369,0 106.7934621889745,-6.292589946296806,0 106.7929538154397,-6.292590070878169,0 106.7921492088458,-6.292596169304088,0 106.7921570251535,-6.29270421273636,0 106.7922905654223,-6.29309517646207,0 106.7923242077647,-6.293518156493533,0 106.7923078012782,-6.294051848229994,0 106.7922925312132,-6.294583752223829,0 106.7922808778741,-6.294966858066453,0 106.7923061411104,-6.295226622694472,0 106.7911680082521,-6.295251852829829,0 106.7903486700149,-6.295255234560913,0 106.7903671611852,-6.295471078247758,0 106.7897334376161,-6.295506143721829,0 106.7892724963727,-6.295569698525922,0 106.7880503058119,-6.295579296386816,0 106.7880271888741,-6.295195616326094,0 106.787914084982,-6.2951315637154,0 106.7875920888509,-6.295094081723667,0 106.7873736341863,-6.295124958925935,0 106.7870273615708,-6.295135305094847,0 106.7869124639286,-6.294990053531324,0 106.7868644488217,-6.294113106078378,0 106.7869983219977,-6.292729265331161,0 106.7870846331639,-6.292712865279493,0 106.7871364343265,-6.292550204118294,0 106.788125735758,-6.292556910894048,0 106.7881245023773,-6.292516671607413,0 106.7871115967581,-6.292508015593006,0 106.7867834100051,-6.292505121794989,0 106.786276659563,-6.292473237570761,0 106.7855840302174,-6.292352968348812,0 106.7849151102203,-6.292157352129121,0 106.784264681445,-6.291942213097059,0 106.7816680322698,-6.291157810392677,0 106.7805498190581,-6.29076463888602,0 106.7796859754891,-6.290281076930238,0 106.7789084109471,-6.289736704612424,0 106.778428880372,-6.289261360095654,0 106.7784376214629,-6.288998385394545,0 106.7786317423756,-6.288899719143572,0 106.7789043706391,-6.289066236042185,0 106.7791361333628,-6.289326165672654,0 106.7792273994763,-6.289204633798856,0 106.7801591808603,-6.289880663177825,0 106.7806432951743,-6.290098399502711,0 106.7809332902624,-6.290245418363142,0 106.7812344387179,-6.290237450764893,0 106.7815536363015,-6.290338507605586,0 106.7822670901322,-6.290572770390422,0 106.7830107625631,-6.2908255960982,0 106.784580474318,-6.291406258940259,0 106.7851121721445,-6.291554390278568,0 106.785212674934,-6.29125724230219,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>POP TBS</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.7856618021204</longitude>
+					<latitude>-6.291282049090363</latitude>
+					<altitude>0</altitude>
+					<heading>0.005537578507887581</heading>
+					<tilt>10.38220597486109</tilt>
+					<range>173.5529029942851</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_track</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.785201,-6.291261,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC ANTAM - XCC WARUNG JATI</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>XCC ANTAM</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.8508671479875</longitude>
+					<latitude>-6.304283479956511</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0006121347521816374</heading>
+					<tilt>22.21079275129716</tilt>
+					<range>358.9322148551664</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-1-labelson02</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.850392,-6.304047,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC ANTAM - XCC WARUNG JATI</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin1</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.8503910455802,-6.30403895199133,0 106.8496998790036,-6.303986918645787,0 106.8489602018565,-6.303944311641425,0 106.848332928608,-6.303897658852808,0 106.8475781502676,-6.303813364019762,0 106.8474681486545,-6.303855710609142,0 106.8469527529024,-6.303797603607707,0 106.8460853206878,-6.303691138368984,0 106.844986335566,-6.303565471600115,0 106.8442075687847,-6.303454505524669,0 106.8438607147372,-6.303410490779492,0 106.8432555995116,-6.303278016112819,0 106.8426842205466,-6.303164623005649,0 106.8418558492688,-6.302998289994192,0 106.8414869765322,-6.302928928153597,0 106.8410239880114,-6.302836311169124,0 106.8409239620789,-6.302894035236304,0 106.839961391728,-6.30267239144,0 106.840027148512,-6.30221596236042,0 106.8396834067935,-6.302132380582883,0 106.8395955848242,-6.302479418204054,0 106.8393627418177,-6.302514838245871,0 106.8388838679097,-6.302368854591708,0 106.8376833779972,-6.301881308470787,0 106.8372549982198,-6.301721786738622,0 106.8365882799644,-6.301297664636039,0 106.8350620545539,-6.300388665248064,0 106.8338160378978,-6.299576643088876,0 106.8324972546841,-6.298720506585846,0 106.8316728450675,-6.298211738602877,0 106.8306157106978,-6.297581955335041,0 106.8295336822064,-6.296969733278831,0 106.8287611329699,-6.296594278146275,0 106.8273864283867,-6.295857021402986,0 106.8258665746023,-6.295072842278979,0 106.8251731801508,-6.294704240610026,0 106.8244564196007,-6.294357108313173,0 106.8228489188926,-6.293697069249905,0 106.8227141135506,-6.29345913254537,0 106.8229626374274,-6.292891320633133,0 106.8227500152144,-6.292804006542252,0 106.8227847507345,-6.292653404035593,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>XCC WARUNG JATI</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.8228119121391</longitude>
+					<latitude>-6.292482926438194</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0001133347539672435</heading>
+					<tilt>24.47516544830992</tilt>
+					<range>281.1014488591622</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8228056,-6.29265833,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC WARUNG JATI - POP TBS</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>XCC WARUNG JATI</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.8228119121391</longitude>
+					<latitude>-6.292482926438194</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0001133347539672435</heading>
+					<tilt>24.47516544830992</tilt>
+					<range>281.1014488591622</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8228056,-6.29265833,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC WARUNG JATI - POP TBS</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin1</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.822761136007,-6.292645311196351,0 106.8225189123502,-6.29315739794344,0 106.8223401703715,-6.293254317778296,0 106.8220464966961,-6.29326196781223,0 106.8214367912063,-6.293063725185343,0 106.8202419212756,-6.292618885896583,0 106.8194398135007,-6.292329874142313,0 106.8188637333054,-6.292190519343007,0 106.8181249861179,-6.292099922180318,0 106.8175652524822,-6.292036161168619,0 106.8161134367776,-6.291947023080733,0 106.8151926282246,-6.291948129569619,0 106.8145384649019,-6.291948787541004,0 106.8141368925843,-6.291835604035062,0 106.812912621759,-6.291787785200074,0 106.8100763192978,-6.291896850889708,0 106.8089502177293,-6.291954605654567,0 106.8064585854872,-6.292031105272045,0 106.8050821563952,-6.292002964897067,0 106.8050399948101,-6.291921621586746,0 106.8049940010353,-6.291589643723205,0 106.8050302817618,-6.291396198162884,0 106.8048618427522,-6.29137291306058,0 106.8047615820117,-6.291574521735486,0 106.8047137179141,-6.291892176390562,0 106.8046712036673,-6.291981217960558,0 106.8044644092366,-6.292003543118236,0 106.8038248886327,-6.292004139005631,0 106.7999686009124,-6.291949136447911,0 106.7965917458926,-6.291908119261904,0 106.7954109546994,-6.291887065288663,0 106.7940184813501,-6.291910706114306,0 106.7904845324582,-6.291892029925402,0 106.7882208165835,-6.291887029177415,0 106.7873901728881,-6.291925250998152,0 106.7863054416501,-6.291783947944674,0 106.7850834131119,-6.29155639543104,0 106.7852144607209,-6.291243504537251,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>POP TBS</name>
+				<visibility>0</visibility>
+				<open>1</open>
+				<LookAt>
+					<longitude>106.7856618021204</longitude>
+					<latitude>-6.291282049090363</latitude>
+					<altitude>0</altitude>
+					<heading>0.005537578507887581</heading>
+					<tilt>10.38220597486109</tilt>
+					<range>173.5529029942851</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_track</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.785201,-6.291261,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC GAPLEK - POP TBS</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>XCC GAPLEK</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.7521689734966</longitude>
+					<latitude>-6.350457891306061</latitude>
+					<altitude>0</altitude>
+					<heading>0.01174657248840107</heading>
+					<tilt>21.94473075550418</tilt>
+					<range>895.643868120032</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.749783,-6.351555,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC GAPLEK - POP TBS</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin3</styleUrl>
+				<ExtendedData>
+					<Data name="deskripsi">
+					</Data>
+					<Data name="LATITUDE">
+					</Data>
+					<Data name="LONGITUDE">
+					</Data>
+					<Data name="NAMA GEDUNG">
+					</Data>
+					<Data name="POP (COLO,SHELTER,MINI ODC,MEDIUM ODC,DATA CENTER,CT,EKSKLUSIF)">
+					</Data>
+					<Data name="POLE (MONOPOLE, TRIANGLE, RECTANGULAR, TIDAK ADA)">
+					</Data>
+					<Data name="ALAMAT - LANTAI , RUANG">
+					</Data>
+					<Data name="UPDATE TERAKHIR (dd-mm-yyyy)">
+					</Data>
+					<Data name="BANDWIDTH TRUNK">
+					</Data>
+					<Data name="MAIN TRUNK (FIBER OPTIK, RADIO LINK)">
+					</Data>
+					<Data name="BACKUP TRUNK (FIBER OPTIK, RADIO LINK, PIHAK KE-3, TIDAK ADA)">
+					</Data>
+					<Data name="ROUTER (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="CATALYST (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="BROCADE (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="ISCOM (ADA, TIDAK ADA):">
+					</Data>
+					<Data name="SDH [NORTEL],[TELLABS],[RAISECOM SDH],[ITN],[HUANHUAN]">
+					</Data>
+					<Data name="BWA [ARTICONET],[SIEMENS],[WIBAS],[RADWIN],[INTRACOM]">
+					</Data>
+					<Data name="RADIO LINK (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="DWDM (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="GPON (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="RACKMOUNT FIBER DRIVER (ADA,TIDAK ADA)">
+					</Data>
+					<Data name="SPLITTER [SC1],[SC2],[SC1-SC2],[SC2-SC2],[ADA],[TIDAK ADA]">
+					</Data>
+					<Data name="OBSOLOTE [PASSPORT],[MARTIS],[DSLAM],[BWA NETRO],[TIDAK ADA]">
+					</Data>
+					<Data name="SISA SPACE RACK (satuan U)">
+					</Data>
+					<Data name="1 [OTB 1],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="1 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 1 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="2 [OTB 2],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="2 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 2 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="3 [OTB 3],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="3 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 3 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="4 [OTB 4],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="4 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 4 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="5 [OTB 5],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="5 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 5 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="6 [OTB 6],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="6 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 6 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="7 [OTB 7],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="7 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 7 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="8 [OTB 8],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="8 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 8 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="id">
+					</Data>
+				</ExtendedData>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.74981,-6.351609000000001,0 106.749855,-6.351038,0 106.749843,-6.350678,0 106.749901,-6.347067000000001,0 106.749917,-6.346724,0 106.750482,-6.346748,0 106.750847,-6.346731,0 106.751035,-6.346858,0 106.751265,-6.346823,0 106.751583,-6.346793,0 106.7519,-6.346747,0 106.752102,-6.346718,0 106.752355,-6.346635000000001,0 106.752655,-6.346481,0 106.753146,-6.34622,0 106.7535,-6.346020000000001,0 106.75382,-6.345859,0 106.75406,-6.345753,0 106.754161,-6.34572,0 106.75453,-6.345601,0 106.755076,-6.345379,0 106.755345,-6.345288,0 106.755662,-6.345166,0 106.755891,-6.345114,0 106.756144,-6.345043,0 106.756545,-6.34503,0 106.75702,-6.345074000000001,0 106.757916,-6.345061,0 106.758517,-6.345049,0 106.758906,-6.345011,0 106.759195,-6.344931,0 106.75962,-6.344799,0 106.759845,-6.344723000000001,0 106.759985,-6.344638,0 106.760138,-6.344680999999999,0 106.76039,-6.344764,0 106.760608,-6.344866,0 106.760749,-6.344968,0 106.760874,-6.345119000000001,0 106.761059,-6.345359000000001,0 106.761158,-6.345529,0 106.761394,-6.345914,0 106.761323,-6.346055000000001,0 106.761698,-6.346603,0 106.761848,-6.346752,0 106.762055,-6.346841999999999,0 106.762251,-6.34691,0 106.762427,-6.34697,0 106.763126,-6.347133,0 106.764085,-6.347363,0 106.764482,-6.347439,0 106.764869,-6.347463,0 106.764994,-6.347266,0 106.765109,-6.346812,0 106.765168,-6.346444,0 106.765238,-6.34609,0 106.765334,-6.345514,0 106.765476,-6.344846000000001,0 106.76533,-6.344817,0 106.765344,-6.344594,0 106.765342,-6.34431,0 106.765362,-6.343786,0 106.765496,-6.343787,0 106.765494,-6.342720000000001,0 106.765503,-6.342351,0 106.765452,-6.342012000000001,0 106.765422,-6.341848,0 106.765376,-6.341592000000001,0 106.765362,-6.341359,0 106.765421,-6.340952,0 106.765462,-6.340676,0 106.765491,-6.340452,0 106.765607,-6.339885,0 106.765639,-6.339381,0 106.765756,-6.338591,0 106.765824,-6.338035,0 106.765866,-6.337758000000001,0 106.766001,-6.337709,0 106.766206,-6.337689000000001,0 106.766466,-6.337695,0 106.766455,-6.337546,0 106.76618,-6.33755,0 106.766002,-6.337502,0 106.765887,-6.337422,0 106.765909,-6.336375,0 106.765923,-6.335102,0 106.765913,-6.334467,0 106.765998,-6.333817,0 106.766058,-6.333104000000001,0 106.766106,-6.332820999999999,0 106.766157,-6.332670000000001,0 106.766221,-6.332546000000001,0 106.766537,-6.332079999999999,0 106.766595,-6.331964999999999,0 106.766611,-6.331767,0 106.766658,-6.330770999999999,0 106.766694,-6.330096,0 106.766715,-6.329052999999999,0 106.766706,-6.328203,0 106.766667,-6.327568,0 106.766602,-6.327224,0 106.766589,-6.327004999999999,0 106.766864,-6.325927,0 106.767209,-6.324468,0 106.767714,-6.322507,0 106.768208,-6.32127,0 106.768346,-6.320743999999999,0 106.768429,-6.320431,0 106.76865,-6.319317,0 106.769111,-6.316984,0 106.769338,-6.315918,0 106.769428,-6.315545,0 106.769656,-6.314303999999999,0 106.76981,-6.313318,0 106.769872,-6.313087,0 106.770008,-6.312838,0 106.770255,-6.312493000000001,0 106.770813,-6.311752000000001,0 106.771109,-6.311343000000001,0 106.771708,-6.310644,0 106.772075,-6.310214,0 106.772273,-6.309978000000001,0 106.772448,-6.309656,0 106.77255,-6.309223,0 106.772616,-6.308398999999999,0 106.77263,-6.307808,0 106.772607,-6.307238,0 106.772621,-6.306955,0 106.772628,-6.305997999999999,0 106.772643,-6.305574999999999,0 106.772683,-6.305424000000001,0 106.772769,-6.305342,0 106.77295,-6.305281,0 106.773266,-6.305259,0 106.773746,-6.305210999999999,0 106.774056,-6.305203,0 106.774281,-6.305163000000001,0 106.774489,-6.305049000000001,0 106.774584,-6.304937000000001,0 106.774636,-6.304793,0 106.774695,-6.304574999999999,0 106.774549,-6.304385,0 106.774359,-6.304338,0 106.774184,-6.304343000000001,0 106.774066,-6.304339,0 106.773872,-6.304466,0 106.773668,-6.304362,0 106.773579,-6.304279,0 106.773594,-6.304025000000001,0 106.773668,-6.303624,0 106.773707,-6.303416,0 106.773683,-6.303211,0 106.773535,-6.302869,0 106.773433,-6.302607,0 106.773436,-6.302319000000001,0 106.773484,-6.302076,0 106.773625,-6.301772,0 106.773817,-6.30139,0 106.773991,-6.301081,0 106.774254,-6.300497,0 106.774393,-6.300157,0 106.774697,-6.299416,0 106.77489,-6.2993,0 106.7748,-6.299106,0 106.774698,-6.29889,0 106.774543,-6.298567,0 106.774678,-6.29849,0 106.775234,-6.298116,0 106.775598,-6.297955,0 106.776009,-6.297801999999999,0 106.776321,-6.297653,0 106.776721,-6.297414000000001,0 106.777203,-6.297077,0 106.777966,-6.296569,0 106.778491,-6.296252,0 106.778857,-6.295994,0 106.779247,-6.295722,0 106.779456,-6.295472,0 106.779557,-6.295236,0 106.779713,-6.294714,0 106.779859,-6.294181999999999,0 106.780134,-6.293055999999999,0 106.780377,-6.292133,0 106.780607,-6.291227,0 106.7807,-6.290962,0 106.780768,-6.290914,0 106.780837,-6.290906999999999,0 106.781312,-6.291084,0 106.781766,-6.291234000000001,0 106.782326,-6.291405999999999,0 106.782891,-6.291554999999999,0 106.783448,-6.291721,0 106.784233,-6.291975999999999,0 106.784639,-6.291342,0 106.785114,-6.291544,0 106.7852108707515,-6.291255207337603,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>POP TBS</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.7856618021204</longitude>
+					<latitude>-6.291282049090363</latitude>
+					<altitude>0</altitude>
+					<heading>0.005537578507887581</heading>
+					<tilt>10.38220597486109</tilt>
+					<range>173.5529029942851</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_track</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.785201,-6.291261,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC DORAEMON - XCC GAPLEK</name>
+			<visibility>0</visibility>
+			<open>1</open>
+			<Placemark>
+				<name>XCC DORAEMON</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.6819241236054</longitude>
+					<latitude>-6.342667950297589</latitude>
+					<altitude>0</altitude>
+					<heading>0.01735170939376673</heading>
+					<tilt>16.38665202385919</tilt>
+					<range>760.3003836554911</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.679465,-6.34142,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC DORAEMON - XCC GAPLEK</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin</styleUrl>
+				<ExtendedData>
+					<Data name="deskripsi">
+					</Data>
+					<Data name="LATITUDE">
+					</Data>
+					<Data name="LONGITUDE">
+					</Data>
+					<Data name="NAMA GEDUNG">
+					</Data>
+					<Data name="POP (COLO,SHELTER,MINI ODC,MEDIUM ODC,DATA CENTER,CT,EKSKLUSIF)">
+					</Data>
+					<Data name="POLE (MONOPOLE, TRIANGLE, RECTANGULAR, TIDAK ADA)">
+					</Data>
+					<Data name="ALAMAT - LANTAI , RUANG">
+					</Data>
+					<Data name="UPDATE TERAKHIR (dd-mm-yyyy)">
+					</Data>
+					<Data name="BANDWIDTH TRUNK">
+					</Data>
+					<Data name="MAIN TRUNK (FIBER OPTIK, RADIO LINK)">
+					</Data>
+					<Data name="BACKUP TRUNK (FIBER OPTIK, RADIO LINK, PIHAK KE-3, TIDAK ADA)">
+					</Data>
+					<Data name="ROUTER (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="CATALYST (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="BROCADE (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="ISCOM (ADA, TIDAK ADA):">
+					</Data>
+					<Data name="SDH [NORTEL],[TELLABS],[RAISECOM SDH],[ITN],[HUANHUAN]">
+					</Data>
+					<Data name="BWA [ARTICONET],[SIEMENS],[WIBAS],[RADWIN],[INTRACOM]">
+					</Data>
+					<Data name="RADIO LINK (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="DWDM (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="GPON (ADA, TIDAK ADA)">
+					</Data>
+					<Data name="RACKMOUNT FIBER DRIVER (ADA,TIDAK ADA)">
+					</Data>
+					<Data name="SPLITTER [SC1],[SC2],[SC1-SC2],[SC2-SC2],[ADA],[TIDAK ADA]">
+					</Data>
+					<Data name="OBSOLOTE [PASSPORT],[MARTIS],[DSLAM],[BWA NETRO],[TIDAK ADA]">
+					</Data>
+					<Data name="SISA SPACE RACK (satuan U)">
+					</Data>
+					<Data name="1 [OTB 1],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="1 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 1 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="2 [OTB 2],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="2 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 2 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="3 [OTB 3],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="3 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 3 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="4 [OTB 4],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="4 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 4 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="5 [OTB 5],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="5 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 5 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="6 [OTB 6],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="6 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 6 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="7 [OTB 7],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="7 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 7 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="8 [OTB 8],[JML CORE],[COUPLER]">
+					</Data>
+					<Data name="8 [(T BB~T TIE),(ARAH IN)],[(T BB~T TIE),(ARAH OUT)]">
+					</Data>
+					<Data name="OTB 8 [(T?C?:),(T?C?:)]">
+					</Data>
+					<Data name="id">
+					</Data>
+				</ExtendedData>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.679476,-6.341418,0 106.680086,-6.341386,0 106.680124,-6.341753000000001,0 106.680138,-6.342101,0 106.680073,-6.342296,0 106.679959,-6.342599,0 106.679908,-6.342942,0 106.679958,-6.343257,0 106.679981,-6.343528000000001,0 106.679983,-6.344013,0 106.679996,-6.344233000000001,0 106.680107,-6.34443,0 106.680137,-6.344593,0 106.680133,-6.344908,0 106.680097,-6.345190000000001,0 106.680061,-6.345386,0 106.680043,-6.345922,0 106.680038,-6.346079999999999,0 106.680046,-6.346376,0 106.680038,-6.346629,0 106.680037,-6.346869,0 106.680046,-6.347212,0 106.681207,-6.347226000000001,0 106.681762,-6.347225,0 106.682883,-6.347238999999999,0 106.68442,-6.347165,0 106.68618,-6.34703,0 106.6869102,-6.3469493,0 106.6875611,-6.3468221,0 106.6876504,-6.3467372,0 106.6877007,-6.3466642,0 106.6876876,-6.3465743,0 106.6878194,-6.3465635,0 106.6878265,-6.3466383,0 106.6880827,-6.346838699999999,0 106.69057,-6.34693,0 106.692215,-6.346958,0 106.694348,-6.346993,0 106.69581,-6.347014,0 106.697408,-6.347015,0 106.698687,-6.347002,0 106.699241,-6.347004,0 106.699239,-6.347111,0 106.699675,-6.34712,0 106.699814,-6.347010999999999,0 106.700402,-6.346983,0 106.701085,-6.347017,0 106.702009,-6.347028,0 106.70274,-6.347038,0 106.70274,-6.347100999999999,0 106.703281,-6.347116,0 106.703403,-6.347032,0 106.704078,-6.347057,0 106.704753,-6.347088000000001,0 106.705503,-6.347096,0 106.706367,-6.347112000000001,0 106.707048,-6.347124999999999,0 106.707681,-6.347121,0 106.70819,-6.347107,0 106.708875,-6.347038,0 106.709509,-6.346878,0 106.710175,-6.346753,0 106.710813,-6.346618,0 106.711268,-6.346514,0 106.712254,-6.346305999999999,0 106.712312,-6.346428000000001,0 106.713177,-6.346295999999999,0 106.713186,-6.346111,0 106.71417,-6.345908999999999,0 106.714713,-6.345782999999999,0 106.715297,-6.345672,0 106.715877,-6.345562,0 106.716667,-6.345377,0 106.717296,-6.345088000000001,0 106.717788,-6.344707,0 106.718216,-6.344414000000001,0 106.71866,-6.344319,0 106.719152,-6.344299,0 106.719771,-6.344269999999999,0 106.720387,-6.344255000000001,0 106.721101,-6.344212000000001,0 106.721578,-6.343960999999999,0 106.722084,-6.343535,0 106.722543,-6.343115,0 106.722951,-6.342787000000001,0 106.723562,-6.342314,0 106.72404,-6.342248,0 106.724558,-6.342174999999999,0 106.725202,-6.34208,0 106.725699,-6.342005,0 106.726305,-6.341918,0 106.726821,-6.341827,0 106.727099,-6.341831,0 106.72757,-6.341962,0 106.727983,-6.342092,0 106.728529,-6.342303,0 106.728925,-6.34245,0 106.729641,-6.342705,0 106.73013,-6.342887,0 106.73077,-6.343062999999999,0 106.731328,-6.343178,0 106.732,-6.343328,0 106.732728,-6.343467,0 106.733546,-6.343616,0 106.735912,-6.344102,0 106.735958,-6.344178999999999,0 106.736071,-6.344412,0 106.735793,-6.345197,0 106.735531,-6.345744,0 106.735293,-6.346315,0 106.735118,-6.346802,0 106.735015,-6.347164,0 106.734921,-6.347624,0 106.734789,-6.34846,0 106.735547,-6.348529,0 106.736433,-6.34867,0 106.737227,-6.348844999999999,0 106.738014,-6.349114,0 106.738649,-6.349461,0 106.739007,-6.349614,0 106.739697,-6.349587,0 106.74021,-6.349694000000001,0 106.740796,-6.349796000000001,0 106.741229,-6.349714,0 106.741309,-6.349616999999999,0 106.741496,-6.349174000000001,0 106.7415359,-6.3490962,0 106.7416426,-6.3490459,0 106.7417673,-6.3490459,0 106.7419685,-6.3490679,0 106.7423965,-6.349143599999999,0 106.7427184,-6.3492282,0 106.7428082,-6.3492316,0 106.7430744,-6.3491882,0 106.743177,-6.349163600000001,0 106.7433353,-6.3491043,0 106.743411,-6.349062900000001,0 106.7434892,-6.3489953,0 106.7435267,-6.348946000000001,0 106.743568,-6.348857299999999,0 106.743624,-6.348710299999999,0 106.7436569,-6.3485371,0 106.7436291,-6.3484601,0 106.7437273,-6.3479204,0 106.7437414,-6.3478315,0 106.7437659,-6.3476938,0 106.743781,-6.3476372,0 106.7437937,-6.3475955,0 106.7438185,-6.3475292,0 106.7438581,-6.3474739,0 106.7438822,-6.3474429,0 106.7439721,-6.347340999999999,0 106.7440482,-6.3472777,0 106.7440988,-6.347250999999999,0 106.7442031,-6.3472117,0 106.7442866,-6.347215300000001,0 106.7444146,-6.347214699999999,0 106.7444696,-6.3472113,0 106.7445709,-6.347197,0 106.7446393,-6.3471727,0 106.7447794,-6.3471074,0 106.7450531,-6.346980899999999,0 106.7451091,-6.346970899999999,0 106.7452019,-6.3469866,0 106.7453179,-6.3470349,0 106.7454527,-6.347092600000001,0 106.7455848,-6.3471602,0 106.7457193,-6.347246499999999,0 106.7458202,-6.3472922,0 106.7459472,-6.3473415,0 106.746069,-6.3473655,0 106.7462161,-6.3473665,0 106.7463925,-6.3473492,0 106.7466845,-6.3473275,0 106.7469615,-6.3473062,0 106.74835,-6.3472556,0 106.7484043,-6.3472363,0 106.748819,-6.347216,0 106.748844,-6.347358,0 106.749157,-6.3472386,0 106.7494618,-6.347093,0 106.7495623,-6.347124999999999,0 106.7495771,-6.3479847,0 106.749614,-6.351564999999999,0 106.7497885,-6.3515811,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>XCC GAPLEK</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.7521689734966</longitude>
+					<latitude>-6.350457891306061</latitude>
+					<altitude>0</altitude>
+					<heading>0.01174657248840107</heading>
+					<tilt>21.94473075550418</tilt>
+					<range>895.643868120032</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.749783,-6.351555,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>XCC CINERE - XCC SAWANGAN</name>
+			<visibility>0</visibility>
+			<Placemark>
+				<name>XCC CINERE</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.7808779525057</longitude>
+					<latitude>-6.321832252492046</latitude>
+					<altitude>0</altitude>
+					<heading>-0.01387102897270811</heading>
+					<tilt>12.70651935597789</tilt>
+					<range>1316.697614247495</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.783873,-6.322059,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>XCC CINERE - XCC SAWANGAN</name>
+				<visibility>0</visibility>
+				<styleUrl>#msn_ylw-pushpin2</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						106.7838784744302,-6.322065424525697,0 106.7840659145505,-6.322766899493594,0 106.784261070976,-6.323416545290836,0 106.784378329651,-6.323806672434642,0 106.7845112539756,-6.324268791779279,0 106.784595427797,-6.324531324527807,0 106.7847131914737,-6.325041013667277,0 106.7847843883786,-6.325289630565338,0 106.7848674096385,-6.325812966365004,0 106.784923081405,-6.326140428190135,0 106.7850525820452,-6.326747004973354,0 106.7849940519937,-6.326880122067917,0 106.7851001385276,-6.3275299599858,0 106.7851568164496,-6.327862191309543,0 106.7851585759739,-6.327953212591553,0 106.7851298740284,-6.328072391684486,0 106.7849612386868,-6.328407867493455,0 106.7843350747043,-6.329541666430949,0 106.7842451238781,-6.329679268647686,0 106.7841516936168,-6.329927146228143,0 106.7838775316283,-6.330690187295623,0 106.7836862081963,-6.331258600086902,0 106.7832854017476,-6.332324996476879,0 106.782973286814,-6.333244581347441,0 106.7827568875537,-6.333819979350601,0 106.7824950963136,-6.334483908214715,0 106.7822870324167,-6.335025404070429,0 106.7820341818668,-6.335694235870544,0 106.7818753677024,-6.336188100558656,0 106.7816829207084,-6.336693606310285,0 106.78155568134,-6.337024716683725,0 106.7813998773894,-6.337335839365241,0 106.7810939155793,-6.337934820237481,0 106.7807731618522,-6.338589234245939,0 106.7805900352827,-6.338964920469238,0 106.7801826815445,-6.339760189002019,0 106.7798420226801,-6.340440879796033,0 106.7796051967,-6.340956746096395,0 106.779011202071,-6.342156673944466,0 106.7785971512772,-6.342995044338562,0 106.7781062443966,-6.343983193568608,0 106.7777561708045,-6.344696429593381,0 106.7776447591969,-6.344979050553844,0 106.7773770958337,-6.345618617112188,0 106.7767207744274,-6.346837546169543,0 106.7765642742646,-6.347188016768441,0 106.7765180498716,-6.347308452723574,0 106.7764378517582,-6.347594779749749,0 106.7763734169472,-6.348211791438654,0 106.7763488861032,-6.348336306383182,0 106.776166274346,-6.34844887381519,0 106.7760843718875,-6.349817113181829,0 106.7760990189704,-6.350480423834949,0 106.7761457025692,-6.352181022885288,0 106.7762824886981,-6.352312169621439,0 106.7762666221082,-6.353535028878443,0 106.7762380274621,-6.354223840902466,0 106.7762237851649,-6.35436758288375,0 106.7761794535748,-6.354431561992773,0 106.7760338724654,-6.354450991739355,0 106.7755637149716,-6.354465453136729,0 106.7755307525597,-6.354527598732895,0 106.7755221583978,-6.354791307254544,0 106.7754881854726,-6.355349438452022,0 106.7755430065089,-6.356373467948918,0 106.7755956383128,-6.357075233901121,0 106.7755825154823,-6.35771965977179,0 106.7756096809063,-6.35789742623718,0 106.7756641485608,-6.358086190609814,0 106.7756908804213,-6.358317184534637,0 106.7756963282843,-6.35875715111062,0 106.7757504469711,-6.359316438161662,0 106.7757701084291,-6.359646200050303,0 106.7758013445426,-6.359764753796498,0 106.7758559700496,-6.359940377821748,0 106.7758802228453,-6.360104978378695,0 106.7759388136653,-6.360757424826311,0 106.775990174778,-6.361298188519315,0 106.7760099898278,-6.362324783819775,0 106.7760290237308,-6.362794231959159,0 106.7760362708788,-6.362939446606168,0 106.7759978507681,-6.363220086354659,0 106.7758691155,-6.363568543528544,0 106.775636527038,-6.364215076175675,0 106.7755187144939,-6.364577643079863,0 106.7754400653838,-6.364938073635797,0 106.7753893147795,-6.365161799033076,0 106.7752005317035,-6.365826595388234,0 106.7750391831025,-6.36635512078317,0 106.7744563797887,-6.368095902763621,0 106.7740847253608,-6.369245195240246,0 106.773848320514,-6.370033557591883,0 106.7737457952046,-6.370273153376962,0 106.7734843590778,-6.370790824770181,0 106.773296075897,-6.371207892953023,0 106.7729663330137,-6.371855135278531,0 106.7726026001687,-6.372534513982151,0 106.7722338922427,-6.37326815223219,0 106.7719886194254,-6.37377960357822,0 106.7718112570324,-6.374160028335355,0 106.7716564230619,-6.374419172756373,0 106.7714183841211,-6.374916730251557,0 106.7709434867687,-6.37584085828482,0 106.7708271816428,-6.376070392837762,0 106.7706362749093,-6.376446624674208,0 106.7702529923044,-6.3772581489852,0 106.7701478232098,-6.377453254263415,0 106.7701166182892,-6.377537044566206,0 106.7701073581847,-6.377630641613409,0 106.7701154723175,-6.377703192483492,0 106.7701524398525,-6.377874483823662,0 106.7701594815587,-6.377984469453045,0 106.7701778307645,-6.378095852208658,0 106.7701608846361,-6.378268094968357,0 106.7701270975454,-6.37844369020995,0 106.7701047266518,-6.378583549263538,0 106.7700621212016,-6.378763342113523,0 106.7699828446489,-6.378954541974672,0 106.7697906221401,-6.379256011900392,0 106.7695623934762,-6.379612733658259,0 106.7694285385693,-6.379853014044776,0 106.7693497585834,-6.380044308845072,0 106.7692819650503,-6.380399482997085,0 106.7691695062137,-6.380973423040735,0 106.7690477552318,-6.381929999659156,0 106.7688943996934,-6.382743323521308,0 106.7688570423767,-6.38295484686813,0 106.768847960117,-6.383217646000591,0 106.7687462228829,-6.383785551836226,0 106.7686724629334,-6.38419568856029,0 106.7686361815098,-6.384501259136449,0 106.7686823932628,-6.385240133098915,0 106.7687147005489,-6.385754937198141,0 106.7688046510836,-6.387468398732335,0 106.7688451273468,-6.388137922233804,0 106.7689039500446,-6.389647631261887,0 106.7689273678409,-6.389967039902757,0 106.7689600400089,-6.39026962560602,0 106.7690101801283,-6.390504063854914,0 106.7690675574721,-6.390692669785563,0 106.7692334201848,-6.391242256399842,0 106.769295082292,-6.39151576388283,0 106.7694054926811,-6.391898430164699,0 106.7695914768536,-6.392548012466982,0 106.769754392832,-6.393066125713509,0 106.7698734436878,-6.393272778305552,0 106.7700523755937,-6.393439004955266,0 106.7703561672052,-6.393673124382987,0 106.7706212124677,-6.393795222393487,0 106.7720963370776,-6.394272096841663,0 106.7725059244768,-6.394471141914253,0 106.7728291947277,-6.394609947554549,0 106.7733827566022,-6.394888416253061,0 106.7737503464276,-6.395079521914443,0 106.7746474267675,-6.395582792699768,0 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>XCC SAWANGAN</name>
+				<visibility>0</visibility>
+				<LookAt>
+					<longitude>106.7808779525057</longitude>
+					<latitude>-6.321832252492046</latitude>
+					<altitude>0</altitude>
+					<heading>-0.01387102897270811</heading>
+					<tilt>12.70651935597789</tilt>
+					<range>1316.697614247495</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_icon-1_61</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.774649,-6.395584999999999,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Folder>
+</Document>
+</kml>

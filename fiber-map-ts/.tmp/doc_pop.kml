@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>POP.kmz</name>
+	<Style id="icon-ci-19-labelson00030000123">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+		<LineStyle>
+			<width>1.1</width>
+		</LineStyle>
+	</Style>
+	<Style id="icon-ci-19-labelson13102310">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+		<LineStyle>
+			<width>1.1</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="icon-ci-19-labelson221010350">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-ci-19-labelson13102310</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-ci-19-labelson00030000123</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0110">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin320</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0110</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin82">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin54</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl007</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight200</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs30">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs80">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs81">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_cross-hairs9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_cross-hairs31</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_cross-hairs_highlight4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0203101025370">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin02036902567</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257110</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025670000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0203101025370000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257111</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin0203690256700011</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin02031010253700000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin02039302571110</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin0203690256700010</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0203101025370001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin020393025711</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025670001</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin02039302571</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin02036902567000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin020393025715</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025671</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0203101025370100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257150</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin0203690256711</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="msn_ylw-pushpin02036902567">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02036902567000">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020369025670000">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020369025670001">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203690256700010">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203690256700011">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020369025671">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203690256711">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02039302571">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257100">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020393025711">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257110">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257111">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02039302571110">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020393025715">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257150">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>files/Untitled-1_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin320">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin54">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl007">
+		<IconStyle>
+			<scale>1.18182</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0110">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight0">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight00">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight000">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight1">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight10">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight11">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight20">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight200">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight4">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight5">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight6">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight7">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight8">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_cross-hairs_highlight9">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.77273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs0">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs00">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs000">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs01">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs11">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs20">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs3">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs31">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs4">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs5">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs6">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs7">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs8">
+		<IconStyle>
+			<scale>0.2</scale>
+			<Icon>
+				<href>files/TIANG LA_6_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_cross-hairs9">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/cross-hairs.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>Temporary Places</name>
+		<open>1</open>
+		<Folder>
+			<name>OLT OUTDOOR</name>
+			<Placemark>
+				<name>OLT OUTDOOR GALUH MAS KARAWANG</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.2907003951322</longitude>
+					<latitude>-6.328811837636449</latitude>
+					<altitude>0</altitude>
+					<heading>-0.0252212554117763</heading>
+					<tilt>30.00083855471547</tilt>
+					<range>186.8313940412066</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_open-diamond</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.290487714884,-6.328953802074251,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>OLT OUTDOOR CIKAMPEK</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.4550139661387</longitude>
+					<latitude>-6.406159196423347</latitude>
+					<altitude>0</altitude>
+					<heading>56.01612857670251</heading>
+					<tilt>45.23900956361921</tilt>
+					<range>102.8588471220194</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_open-diamond</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.4550147989108,-6.406143777677498,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>OLT KRANGGAN</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.9229608274608</longitude>
+					<latitude>-6.343568044295858</latitude>
+					<altitude>0</altitude>
+					<heading>0.0001279574188065939</heading>
+					<tilt>21.23164146681755</tilt>
+					<range>199.4304675573033</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin82</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.9227100479284,-6.343589856197074,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>POP</name>
+			<Folder>
+				<name>POP JABONG</name>
+				<Folder>
+					<name>LOKASI POP</name>
+					<Placemark>
+						<name>POP JABONG</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9819568191615</longitude>
+							<latitude>-6.308850161875127</latitude>
+							<altitude>0</altitude>
+							<heading>-0.01181628433679711</heading>
+							<tilt>21.52901263102412</tilt>
+							<range>171.560426803542</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs80</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9818896927203,-6.309212720953121,0</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+				<Folder>
+					<name>RUTE</name>
+					<Placemark>
+						<name>Untitled Path</name>
+						<styleUrl>#m_ylw-pushpin0110</styleUrl>
+						<LineString>
+							<tessellate>1</tessellate>
+							<coordinates>
+								106.9818818320604,-6.309203270039541,0 106.9818344863927,-6.309469877211285,0 106.9817109595368,-6.309238092670402,0 106.9817432897323,-6.308936282081435,0 106.9818387407325,-6.308803364270207,0 106.9822118638615,-6.308828141129955,0 106.9824412492545,-6.308892921444998,0 106.9827887409342,-6.308923671553741,0 106.9829945475705,-6.308926960703043,0 106.9831816078502,-6.308904540724138,0 106.9833768868668,-6.308923302407377,0 106.9836294563295,-6.308963847834828,0 106.9837251551924,-6.308940125402269,0 
+							</coordinates>
+						</LineString>
+					</Placemark>
+				</Folder>
+				<Folder>
+					<name>TIANG</name>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9825747832682</longitude>
+							<latitude>-6.309135860985194</latitude>
+							<altitude>0</altitude>
+							<heading>7.553817368475852e-15</heading>
+							<tilt>0</tilt>
+							<range>296.6661113147409</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs9</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9817084077222,-6.309237978082116,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9824167220356</longitude>
+							<latitude>-6.309035707187955</latitude>
+							<altitude>0</altitude>
+							<heading>1.73695756072474e-05</heading>
+							<tilt>0</tilt>
+							<range>296.666111315794</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs1</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9817439731825,-6.308919842222616,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9824167220356</longitude>
+							<latitude>-6.309035707187955</latitude>
+							<altitude>0</altitude>
+							<heading>1.73695756072474e-05</heading>
+							<tilt>0</tilt>
+							<range>296.666111315794</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs7</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9818447376654,-6.308786303899783,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9824167220356</longitude>
+							<latitude>-6.309035707187955</latitude>
+							<altitude>0</altitude>
+							<heading>1.73695756072474e-05</heading>
+							<tilt>0</tilt>
+							<range>296.666111315794</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs4</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9822063031381,-6.308809870105417,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9824167220356</longitude>
+							<latitude>-6.309035707187955</latitude>
+							<altitude>0</altitude>
+							<heading>1.73695756072474e-05</heading>
+							<tilt>0</tilt>
+							<range>296.666111315794</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs81</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9824453706709,-6.308880567037372,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9829956223034</longitude>
+							<latitude>-6.309041598652247</latitude>
+							<altitude>0</altitude>
+							<heading>-4.624783014210253e-05</heading>
+							<tilt>0</tilt>
+							<range>296.6661113140639</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs3</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9827792759156,-6.308910024204422,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9829956223034</longitude>
+							<latitude>-6.309041598652247</latitude>
+							<altitude>0</altitude>
+							<heading>-4.624783014210253e-05</heading>
+							<tilt>0</tilt>
+							<range>296.6661113140639</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs5</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9831902350415,-6.308888422095088,0</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark>
+						<name>Untitled Placemark</name>
+						<LookAt>
+							<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+							<longitude>106.9829956223034</longitude>
+							<latitude>-6.309041598652247</latitude>
+							<altitude>0</altitude>
+							<heading>-4.624783014210253e-05</heading>
+							<tilt>0</tilt>
+							<range>296.6661113140639</range>
+							<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+						</LookAt>
+						<styleUrl>#msn_cross-hairs6</styleUrl>
+						<Point>
+							<gx:drawOrder>1</gx:drawOrder>
+							<coordinates>106.9836802257801,-6.308945371345605,0</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+			</Folder>
+			<Placemark>
+				<name>PoP ITC Cibinong</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.8630331783235</longitude>
+					<latitude>-6.479767710801523</latitude>
+					<altitude>0</altitude>
+					<heading>-0.003899761948607396</heading>
+					<tilt>26.60756430654828</tilt>
+					<range>771.1387999379917</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_cross-hairs30</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8623477350635,-6.480426823545685,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>PoP MDP</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.8276878992918</longitude>
+					<latitude>-6.386514658908204</latitude>
+					<altitude>0</altitude>
+					<heading>-3.273742679551594e-05</heading>
+					<tilt>27.66149620675009</tilt>
+					<range>408.5169556520127</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_cross-hairs10</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8267723774834,-6.386923132288037,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>POP CTC</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.1360117176946</longitude>
+					<latitude>-6.319222091119848</latitude>
+					<altitude>0</altitude>
+					<heading>-0.01380697637220237</heading>
+					<tilt>30.0016104115289</tilt>
+					<range>358.5273000542363</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_cross-hairs000</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1360882032906,-6.319393750475035,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>POP MM2100</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.1113290926115</longitude>
+					<latitude>-6.300291721463289</latitude>
+					<altitude>0</altitude>
+					<heading>-0.03594501060581607</heading>
+					<tilt>24.31918350764705</tilt>
+					<range>323.3765303633932</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_cross-hairs0</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.111288,-6.299897999999999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>POP JB1</name>
+				<LookAt>
+					<gx:TimeSpan>
+						<begin>2022-01-22T05:34:45Z</begin>
+						<end>2024-02-19T15:05:28Z</end>
+					</gx:TimeSpan>
+					<longitude>107.1402004082539</longitude>
+					<latitude>-6.294278669595224</latitude>
+					<altitude>0</altitude>
+					<heading>0.003272388233737053</heading>
+					<tilt>26.75644781618</tilt>
+					<range>412.6124096614398</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_cross-hairs2</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1395920228556,-6.294358695028732,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>DC</name>
+			<Placemark>
+				<name>DATA CENTER BIZNET</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.8984032618168</longitude>
+					<latitude>-6.432415404320582</latitude>
+					<altitude>0</altitude>
+					<heading>0.001224399606148337</heading>
+					<tilt>16.83716654291145</tilt>
+					<range>2079.691825258571</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin0203101025370</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8969666653497,-6.435331781512005,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DC AREA 31</name>
+				<LookAt>
+					<longitude>106.8732991804605</longitude>
+					<latitude>-6.446085706401791</latitude>
+					<altitude>0</altitude>
+					<heading>53.91415111484039</heading>
+					<tilt>30.25815023899577</tilt>
+					<range>609.8750111425446</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#icon-ci-19-labelson221010350</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8727144443229,-6.44460718085676,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DC TELKOM SIGMA SENTUL</name>
+				<LookAt>
+					<gx:TimeSpan>
+						<begin>2022-01-31T04:20:48Z</begin>
+						<end>2022-01-31T05:54:14Z</end>
+					</gx:TimeSpan>
+					<longitude>106.8620770698142</longitude>
+					<latitude>-6.574234576632346</latitude>
+					<altitude>0</altitude>
+					<heading>-1.730366819811574</heading>
+					<tilt>27.63934826590697</tilt>
+					<range>1294.591226308875</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin0203101025370100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8604774411274,-6.576145996265999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DC INDOKOPEL</name>
+				<LookAt>
+					<gx:TimeSpan>
+						<begin>2023-08-08T07:23:22Z</begin>
+						<end>2023-08-08T08:03:18Z</end>
+					</gx:TimeSpan>
+					<longitude>106.8933624657345</longitude>
+					<latitude>-6.51258083607309</latitude>
+					<altitude>0</altitude>
+					<heading>0.006645141233339351</heading>
+					<tilt>27.903369322097</tilt>
+					<range>1378.601515579704</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin020310102537010</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8940917462097,-6.514917365261836,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DATA CENTER INDONESIA</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.0974841988756</longitude>
+					<latitude>-6.304707112409101</latitude>
+					<altitude>0</altitude>
+					<heading>-146.3225876846694</heading>
+					<tilt>27.97404676560934</tilt>
+					<range>321.1697107131287</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin02031010253700000</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.097426,-6.304880999999999,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DATA CENTER PDG</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.0899170597323</longitude>
+					<latitude>-6.314303499056201</latitude>
+					<altitude>0</altitude>
+					<heading>0.002192655550552537</heading>
+					<tilt>26.24918313033114</tilt>
+					<range>562.7922455354663</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin0203101025370000</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.0897535352854,-6.314641467629738,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DATA CENTER GTN</name>
+				<LookAt>
+					<gx:TimeSpan>
+						<begin>2025-03-06T05:03:54Z</begin>
+						<end>2025-03-06T05:48:52Z</end>
+					</gx:TimeSpan>
+					<longitude>107.1670610381239</longitude>
+					<latitude>-6.345733548021617</latitude>
+					<altitude>0</altitude>
+					<heading>0.02305503836125019</heading>
+					<tilt>26.21629053846455</tilt>
+					<range>371.3967457554807</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin020310102537000</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.167094661678,-6.345898239682777,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>NC LA</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.2656012707523</longitude>
+					<latitude>-6.355920183667147</latitude>
+					<altitude>0</altitude>
+					<heading>8.780189209333252e-05</heading>
+					<tilt>13.99453187893771</tilt>
+					<range>224.9168356161557</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin0203101025370001</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.2652381618385,-6.35578557646973,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>DATA CENTER NTT</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>107.0957120370794</longitude>
+					<latitude>-6.303938883413025</latitude>
+					<altitude>0</altitude>
+					<heading>0.0003386037376489448</heading>
+					<tilt>20.85786577009943</tilt>
+					<range>799.469364590435</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin020310102537001</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.0957120433428,-6.30511271318356,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Folder>
+</Document>
+</kml>

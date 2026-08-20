@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+@theme {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-glass: var(--glass);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-panel-hover: var(--panel-hover);
+
+  --color-fiber-normal: #00E5FF;
+  --color-fiber-warning: #FFB300;
+  --color-fiber-critical: #FF3366;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-ripple: ripple 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+:root {
+  --bg: #F9FAFB;
+  --surface: rgba(255, 255, 255, 0.85);
+  --glass: rgba(255, 255, 255, 0.75);
+  --border: rgba(0, 0, 0, 0.1);
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --panel-hover: rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  --bg: #050A14;
+  --surface: rgba(10, 15, 26, 0.6);
+  --glass: rgba(20, 25, 35, 0.7);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --panel-hover: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(255, 51, 102, 0.8)); }
+  50% { opacity: 0.7; filter: drop-shadow(0 0 2px rgba(255, 51, 102, 0.4)); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary antialiased overflow-hidden m-0 p-0;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-glass backdrop-blur-xl border border-border shadow-xl;
+  }
+}
+
+/* Custom Marker for Critical Alarms */
+.alarm-marker {
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-fiber-critical);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
+}
+
+.alarm-marker::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-fiber-critical);
+  animation: ripple 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>ODP.kmz</name>
+	<StyleMap id="m_ylw-pushpin000010">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin000010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl000100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0000100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0000100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0001000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0.2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0.0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0.5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.02</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.120</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.21">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.030</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.210">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.03</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01.4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01.</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01.</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_Logo ODP_0_0_01_1.">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_Logo ODP_0_0_01_1.</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_Logo ODP_0_0_01_1.</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin000010">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0000100">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl000100">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0001000">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0.5">
+		<IconStyle>
+			<scale>0.709092</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.0">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.00">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.000">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.02">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.03">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.030">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.10">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.20">
+		<IconStyle>
+			<scale>0.816667</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01.5">
+		<IconStyle>
+			<scale>0.709091</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_Logo ODP_0_0_01_1.">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0.0">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.00">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.01">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.11">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.12">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.120">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.20">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.3">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.4">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01.6">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_Logo ODP_0_0_01_1.">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/Logo ODP_0_0_01_1_3_1_0..png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>ODP</name>
+		<Placemark>
+			<name>ODP DEPOK INDAH</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8286767380349</longitude>
+				<latitude>-6.385526161129142</latitude>
+				<altitude>0</altitude>
+				<heading>4.160516775861913e-09</heading>
+				<tilt>44.99999999572674</tilt>
+				<range>999.9996507577465</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.4</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8280350906192,-6.387451627874028,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP STASIUN BOGOR</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.7898566495351</longitude>
+				<latitude>-6.596661447567305</latitude>
+				<altitude>0</altitude>
+				<heading>-0.002322967955873418</heading>
+				<tilt>11.1682822809549</tilt>
+				<range>2261.626758240666</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.789811247693,-6.596071766187578,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP GIANT BOGOR</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8098638901325</longitude>
+				<latitude>-6.607762259631033</latitude>
+				<altitude>0</altitude>
+				<heading>-0.003520039541669474</heading>
+				<tilt>21.95305230390361</tilt>
+				<range>254.1071964383947</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.809819915665,-6.607514574864556,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP SURYA KENCANA</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8052719627248</longitude>
+				<latitude>-6.610443779608888</latitude>
+				<altitude>0</altitude>
+				<heading>-0.004330345639422701</heading>
+				<tilt>29.38632602003548</tilt>
+				<range>192.5953128212522</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8052394638338,-6.610528583302282,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP KPP BOGOR</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.7962747373411</longitude>
+				<latitude>-6.604076632272095</latitude>
+				<altitude>0</altitude>
+				<heading>-0.002204125836685228</heading>
+				<tilt>23.5836750085251</tilt>
+				<range>259.8147276636336</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.795971457864,-6.603742995479932,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>SC 2</name>
+			<description>SC Jakapermai</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.9686042063634</longitude>
+				<latitude>-6.249710653162754</latitude>
+				<altitude>0</altitude>
+				<heading>-3.054394235914053e-06</heading>
+				<tilt>13.24492146403867</tilt>
+				<range>681.4706123096616</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.9687570691255,-6.24912075420797,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>SC 2</name>
+			<description>SC1 SC2 Galaxy</description>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.9688586210996</longitude>
+				<latitude>-6.253909150084322</latitude>
+				<altitude>0</altitude>
+				<heading>-7.12365436880469e-05</heading>
+				<tilt>28.48584644595439</tilt>
+				<range>376.4149354840795</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000010</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.9687914587754,-6.253952110510999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP RM TELAGA SARI</name>
+			<LookAt>
+				<longitude>106.8380637772004</longitude>
+				<latitude>-6.403826356410558</latitude>
+				<altitude>0</altitude>
+				<heading>0.0002029235851235096</heading>
+				<tilt>34.33527214796766</tilt>
+				<range>76.88289074340533</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0.2</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8379310902647,-6.403939146794652,96.30095763994231</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>SC2 SAMUDERA MOTOR</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2022-01-22T05:34:45Z</begin>
+					<end>2022-06-08T09:24:33Z</end>
+				</gx:TimeSpan>
+				<longitude>106.8286586150547</longitude>
+				<latitude>-6.635940364162939</latitude>
+				<altitude>0</altitude>
+				<heading>-2.80020865939436e-05</heading>
+				<tilt>28.88382935750825</tilt>
+				<range>85.30006827873034</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_Logo ODP_0_0_01.001</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8285474178787,-6.636024765143271,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ODP Perempatan Cijago</name>
+			<description><![CDATA[LATITUDE: -6.3826308<br>LONGITUDE: 106.8667721<br>ALAMAT - LANDMARK: Jl. Raya Bogor - Perempatan Cijago<br>STATUS (RFS,PLAN,PROSES,PENUH): RFS<br>VENDOR (NETFO, INNANDA, KOPKARLA, ELCOMM, TELEMITRA): INNANDA<br>TANGGAL PENGECEKAN (dd-mm-yyyy, ABD): <br>JENIS BOX ODP/OTB (ODP PAZ, ODP SUNSEA, OTB LINTECH, dsb): ODP<br>JENIS COUPLER (SC-APC, LC-APC): SC-APC<br>JUMLAH PORT OTB / ODP: 44<br>DATA OLT [OLT 1],[OLT 2]: [JKTACDGA01]<br>[SLOT OLT 1],[SLOT OLT 2]: [1]<br>[PORT OLT 1], [PORT OLT 2]: [2]<br>LOKASI SPLITTER (TIANG, POP LA, GEDUNG): TIANG<br>NAMA SPLITTER KE-1 (main system ~ backup system): JKTACDGA01-1/SC1-2<br>NAMA SPLITTER KE-2 (main system ~ backup system): JKTACDGA01-1/SC1-2/SC2-1<br>NAMA SPLITTER KE-3 (main system ~ backup system): <br>JENIS SPLITTER (SC1-SC1, SC1-SC2, SC2-SC2, SC1, SC2): SC1-SC2<br>KAPASITAS SP1 (1:4, 2:8, 2:16, 2:32): <br>KAPASITAS SP2 (1:4, 2:8, 2:16, 2:32): <br>KAPASITAS SP3 (1:4, 2:8, 2:16, 2:32): <br>[1], [2], [3]: [JKTACDGA01-1/SC1-2]<br>[4], [5], [6]: <br>[7], [8], [9]: <br>[10], [11], [12]: <br>[13], [14], [15]: <br>[16], [17], [18]: <br>[19], [20], 21]: <br>[22], [23], [24]: <br>[25], [26], [27]: [JKTACDGA01-1/SC1-2],[JKTACDGA01-1/SC1-2/SC2-1],[JKTACDGA01-1/SC1-2/SC2-1]<br>[28], [29], [30]: <br>[31], [32], [33]: <br>[34], [35], [36]: <br>[37], [38], [39]: <br>[40], [41], [42]: <br>[43], [44], [45]: <br>[46], [47], [48]: <br>dB Port[1],[2],[3],[4]: <br>dB Port[5],[6],[7],[8]: <br>dB Port[9],[10],[11],[12]: <br>dB Port[13],[14],[15],[16]: <br>dB Port[17],[18],[19],[20]: <br>dB Port[21],[22],[23],[24]: <br>dB Port[25],[26],[27],[28]: <br>dB Port[29],[30],[31],[32]: <br>dB Port[33],[34],[35],[36]: <br>dB Port[37],[38],[39],[40]: <br>dB Port[41],[42],[43],[44]: <br>dB Port[45],[46],[47],[48]: <br>KETERANGAN:]]></description>
+			<styleUrl>#msn_Logo ODP_0_0_01.001</styleUrl>
+			<ExtendedData>
+				<Data name="LATITUDE">
+					<value>-6.3826308</value>
+				</Data>
+				<Data name="LONGITUDE">
+					<value>106.8667721</value>
+				</Data>
+				<Data name="ALAMAT - LANDMARK">
+					<value>Jl. Raya Bogor - Perempatan Cijago</value>
+				</Data>
+				<Data name="STATUS (RFS,PLAN,PROSES,PENUH)">
+					<value>RFS</value>
+				</Data>
+				<Data name="VENDOR (NETFO, INNANDA, KOPKARLA, ELCOMM, TELEMITRA)">
+					<value>INNANDA</value>
+				</Data>
+				<Data name="TANGGAL PENGECEKAN (dd-mm-yyyy, ABD)">
+				</Data>
+				<Data name="JENIS BOX ODP/OTB (ODP PAZ, ODP SUNSEA, OTB LINTECH, dsb)">
+					<value>ODP</value>
+				</Data>
+				<Data name="JENIS COUPLER (SC-APC, LC-APC)">
+					<value>SC-APC</value>
+				</Data>
+				<Data name="JUMLAH PORT OTB / ODP">
+					<value>44</value>
+				</Data>
+				<Data name="DATA OLT [OLT 1],[OLT 2]">
+					<value>[JKTACDGA01]</value>
+				</Data>
+				<Data name="[SLOT OLT 1],[SLOT OLT 2]">
+					<value>[1]</value>
+				</Data>
+				<Data name="[PORT OLT 1], [PORT OLT 2]">
+					<value>[2]</value>
+				</Data>
+				<Data name="LOKASI SPLITTER (TIANG, POP LA, GEDUNG)">
+					<value>TIANG</value>
+				</Data>
+				<Data name="NAMA SPLITTER KE-1 (main system ~ backup system)">
+					<value>JKTACDGA01-1/SC1-2</value>
+				</Data>
+				<Data name="NAMA SPLITTER KE-2 (main system ~ backup system)">
+					<value>JKTACDGA01-1/SC1-2/SC2-1</value>
+				</Data>
+				<Data name="NAMA SPLITTER KE-3 (main system ~ backup system)">
+				</Data>
+				<Data name="JENIS SPLITTER (SC1-SC1, SC1-SC2, SC2-SC2, SC1, SC2)">
+					<value>SC1-SC2</value>
+				</Data>
+				<Data name="KAPASITAS SP1 (1:4, 2:8, 2:16, 2:32)">
+				</Data>
+				<Data name="KAPASITAS SP2 (1:4, 2:8, 2:16, 2:32)">
+				</Data>
+				<Data name="KAPASITAS SP3 (1:4, 2:8, 2:16, 2:32)">
+				</Data>
+				<Data name="[1], [2], [3]">
+					<value>[JKTACDGA01-1/SC1-2]</value>
+				</Data>
+				<Data name="[4], [5], [6]">
+				</Data>
+				<Data name="[7], [8], [9]">
+				</Data>
+				<Data name="[10], [11], [12]">
+				</Data>
+				<Data name="[13], [14], [15]">
+				</Data>
+				<Data name="[16], [17], [18]">
+				</Data>
+				<Data name="[19], [20], 21]">
+				</Data>
+				<Data name="[22], [23], [24]">
+				</Data>
+				<Data name="[25], [26], [27]">
+					<value>[JKTACDGA01-1/SC1-2],[JKTACDGA01-1/SC1-2/SC2-1],[JKTACDGA01-1/SC1-2/SC2-1]</value>
+				</Data>
+				<Data name="[28], [29], [30]">
+				</Data>
+				<Data name="[31], [32], [33]">
+				</Data>
+				<Data name="[34], [35], [36]">
+				</Data>
+				<Data name="[37], [38], [39]">
+				</Data>
+				<Data name="[40], [41], [42]">
+				</Data>
+				<Data name="[43], [44], [45]">
+				</Data>
+				<Data name="[46], [47], [48]">
+				</Data>
+				<Data name="dB Port[1],[2],[3],[4]">
+				</Data>
+				<Data name="dB Port[5],[6],[7],[8]">
+				</Data>
+				<Data name="dB Port[9],[10],[11],[12]">
+				</Data>
+				<Data name="dB Port[13],[14],[15],[16]">
+				</Data>
+				<Data name="dB Port[17],[18],[19],[20]">
+				</Data>
+				<Data name="dB Port[21],[22],[23],[24]">
+				</Data>
+				<Data name="dB Port[25],[26],[27],[28]">
+				</Data>
+				<Data name="dB Port[29],[30],[31],[32]">
+				</Data>
+				<Data name="dB Port[33],[34],[35],[36]">
+				</Data>
+				<Data name="dB Port[37],[38],[39],[40]">
+				</Data>
+				<Data name="dB Port[41],[42],[43],[44]">
+				</Data>
+				<Data name="dB Port[45],[46],[47],[48]">
+				</Data>
+				<Data name="KETERANGAN">
+				</Data>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8667721,-6.3826308,0</coordinates>
+			</Point>
+		</Placemark>
+		<Folder>
+			<name>Cikarang</name>
+			<Placemark>
+				<name>SC 2</name>
+				<description>Sc 2 Sebelum Flyover</description>
+				<LookAt>
+					<longitude>107.1437837841011</longitude>
+					<latitude>-6.309514058618618</latitude>
+					<altitude>0</altitude>
+					<heading>-1.765428499193278e-10</heading>
+					<tilt>0</tilt>
+					<range>1002.230399091314</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1437837841011,-6.309514058618619,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC 1 - SC 2</name>
+				<description>SC 1 - 2 Depan Indomart Cikarang</description>
+				<LookAt>
+					<longitude>107.1451333333565</longitude>
+					<latitude>-6.301683333236904</latitude>
+					<altitude>0</altitude>
+					<heading>-2.529932464436636e-12</heading>
+					<tilt>0</tilt>
+					<range>1000.000224936225</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1451333333564,-6.301683333236904,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC 2</name>
+				<description>Sc 2 Depan PT Sucaco</description>
+				<LookAt>
+					<longitude>107.1374999997811</longitude>
+					<latitude>-6.317216666716781</latitude>
+					<altitude>0</altitude>
+					<heading>2.408475032538248e-11</heading>
+					<tilt>0</tilt>
+					<range>1000.000138189904</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1374999997811,-6.31721666671678,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC 1 - SC 2</name>
+				<description>Sc 1- 2 Depan Warung Gudeg Yogya</description>
+				<LookAt>
+					<longitude>107.1350499998428</longitude>
+					<latitude>-6.318750000024042</latitude>
+					<altitude>0</altitude>
+					<heading>1.731513847055497e-11</heading>
+					<tilt>0</tilt>
+					<range>1000.000193167005</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>107.1350499998428,-6.318750000024042,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Halim Perdanakusuma - Bluebird</name>
+			<Placemark>
+				<name>SC 2 - SC 2</name>
+				<description>Depan Gereja Halim</description>
+				<LookAt>
+					<longitude>106.8871163173101</longitude>
+					<latitude>-6.262562209682621</latitude>
+					<altitude>0</altitude>
+					<heading>1.829513024330577e-05</heading>
+					<tilt>34.94638641646692</tilt>
+					<range>215.1240453954277</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_Logo ODP_0_0_01.000</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8872582809061,-6.262677402960136,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC 1 - SC 2</name>
+				<description>Depan Bluebird Cawang</description>
+				<LookAt>
+					<longitude>106.8871163173101</longitude>
+					<latitude>-6.262562209682621</latitude>
+					<altitude>0</altitude>
+					<heading>1.829513024330577e-05</heading>
+					<tilt>34.94638641646692</tilt>
+					<range>215.1240453954277</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.8774833333333,-6.248866666666665,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Bekasi</name>
+			<Folder>
+				<name>Jl. Sultan Agung</name>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>SC Seberang Jl. Wahab Affan</description>
+					<LookAt>
+						<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+						<longitude>106.9754030698031</longitude>
+						<latitude>-6.207983203051501</latitude>
+						<altitude>0</altitude>
+						<heading>0.001090773160109495</heading>
+						<tilt>28.14363903621229</tilt>
+						<range>1001.12809925897</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_Logo ODP_0_0_01.3</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9779163002455,-6.209540918193385,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Seberang Delear Suzuki - Jl. Sultan Agung</description>
+					<LookAt>
+						<longitude>106.9730833334649</longitude>
+						<latitude>-6.194450000053373</latitude>
+						<altitude>0</altitude>
+						<heading>-1.418587023333006e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000158859892</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9730833334649,-6.194450000053373,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl.Jendral Soedirman</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan Grand Mall Bekasi - Jl. Jend. Soedirman</description>
+					<LookAt>
+						<longitude>106.9837000000521</longitude>
+						<latitude>-6.228766666549049</latitude>
+						<altitude>0</altitude>
+						<heading>-5.666158165027255e-12</heading>
+						<tilt>0</tilt>
+						<range>1000.000192374245</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9837,-6.228766666666666,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Jendral Ahmad Yani</name>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>Jl. Ahmad Yani Dekat Pos Polisi Seberang Cyber Park</description>
+					<LookAt>
+						<longitude>106.9927500000229</longitude>
+						<latitude>-6.246566666585507</latitude>
+						<altitude>0</altitude>
+						<heading>-2.484410775558189e-12</heading>
+						<tilt>0</tilt>
+						<range>1000.001551903001</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9927500000229,-6.246566666585508,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan PT. Maruka</description>
+					<LookAt>
+						<longitude>106.9929000001115</longitude>
+						<latitude>-6.244683333397783</latitude>
+						<altitude>0</altitude>
+						<heading>-1.21202987523871e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000206876374</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9929000001115,-6.244683333397783,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 1- SC2</name>
+					<description>Depan Bank Sinarmas - Jl. Ahmad Yani</description>
+					<LookAt>
+						<longitude>106.9931666666969</longitude>
+						<latitude>-6.241433333299853</latitude>
+						<altitude>0</altitude>
+						<heading>-3.277561599248154e-12</heading>
+						<tilt>0</tilt>
+						<range>1000.000123681888</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9931666666969,-6.241433333299854,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Seberang Stadion Patriot - Jl. Ahmad Yani</description>
+					<LookAt>
+						<longitude>106.9933166313987</longitude>
+						<latitude>-6.238683977895382</latitude>
+						<altitude>0</altitude>
+						<heading>1.113472437046859e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.506796550014</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9933166313987,-6.238683977895382,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Burangrang -  
+Jl. Jend Ahmad Yani - Depan DINAS TENAGA KERJA</description>
+					<LookAt>
+						<longitude>106.992483333262</longitude>
+						<latitude>-6.243733333335293</latitude>
+						<altitude>0</altitude>
+						<heading>7.766119393463541e-12</heading>
+						<tilt>0</tilt>
+						<range>1000.000078889372</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.992483333262,-6.243733333335293,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan Taman Hutan Bekasi - Jl. Jend Sudirman - PEREMPATAN A. YANI SUDIRMAN ARAH CAKUNG</description>
+					<LookAt>
+						<longitude>106.992716666503</longitude>
+						<latitude>-6.233733333305496</latitude>
+						<altitude>0</altitude>
+						<heading>1.778884233342545e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000225737304</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.992716666503,-6.233733333305495,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Ir.H.Juanda</name>
+				<Placemark>
+					<name>SC</name>
+					<description>Sebrang STO Telkom</description>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<coordinates>107.0065833333333,-6.244233333333334,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Kalimalang</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan Graha Persada 1</description>
+					<LookAt>
+						<longitude>106.9785333000422</longitude>
+						<latitude>-6.247599999912609</latitude>
+						<altitude>0</altitude>
+						<heading>-4.573240062609354e-12</heading>
+						<tilt>0</tilt>
+						<range>1219.917771075021</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9785333000422,-6.247599999912608,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Seberang RS. Budi Lestari</description>
+					<LookAt>
+						<longitude>106.9812817482324</longitude>
+						<latitude>-6.24785915946183</latitude>
+						<altitude>0</altitude>
+						<heading>0.001044954766349189</heading>
+						<tilt>29.03080008301103</tilt>
+						<range>201.96421803767</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9811036271161,-6.247885798346697,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Seberang Graha Persada 1 , Samping Jembatan</description>
+					<LookAt>
+						<longitude>106.9775167000792</longitude>
+						<latitude>-6.247983300074943</latitude>
+						<altitude>0</altitude>
+						<heading>-8.606978537375459e-12</heading>
+						<tilt>0</tilt>
+						<range>1219.917710833698</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9775167000792,-6.247983300074943,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Dekat Pospol Jl. Kalimalang</description>
+					<LookAt>
+						<longitude>106.9442052722847</longitude>
+						<latitude>-6.249515455701502</latitude>
+						<altitude>0</altitude>
+						<heading>1.279201202264543e-10</heading>
+						<tilt>0</tilt>
+						<range>1227.268691627445</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9442052722847,-6.249515455701502,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC depan Bank BJB Kalimalang, Jl. Kalimalang</description>
+					<LookAt>
+						<longitude>106.9284499997569</longitude>
+						<latitude>-6.247800000048758</latitude>
+						<altitude>0</altitude>
+						<heading>2.645605262508113e-11</heading>
+						<tilt>0</tilt>
+						<range>1219.917400963285</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9284499997569,-6.247800000048758,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Mayor Moh Hasibuan</name>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>SC deket perempatan jl RA Kartini</description>
+					<LookAt>
+						<longitude>106.9995803987431</longitude>
+						<latitude>-6.250516273849738</latitude>
+						<altitude>0</altitude>
+						<heading>7.930832369029834e-11</heading>
+						<tilt>0</tilt>
+						<range>1003.804439198907</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9995803987431,-6.250516273849739,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Chairil Anwar</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>Sc 2 Kawasan Ruko Kali Mas</description>
+					<LookAt>
+						<longitude>107.0162627723132</longitude>
+						<latitude>-6.259865371754827</latitude>
+						<altitude>0</altitude>
+						<heading>6.386792341979851e-11</heading>
+						<tilt>0</tilt>
+						<range>1002.627001154945</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>107.0162627723132,-6.259865371754827,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>Sc 2 Dekat Carefoure</description>
+					<LookAt>
+						<longitude>107.009699999665</longitude>
+						<latitude>-6.257683333210096</latitude>
+						<altitude>0</altitude>
+						<heading>3.652151426857519e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000176436027</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>107.009699999665,-6.257683333210096,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Sultan Hasanudin</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>Sc 2 Depan Hino</description>
+					<LookAt>
+						<longitude>107.0887666668628</longitude>
+						<latitude>-6.270366666963181</latitude>
+						<altitude>0</altitude>
+						<heading>-2.141268682361794e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000140616318</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_Logo ODP_0_0_01.20</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>107.0887666666988,-6.270366666648179,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>SC 1 - SC 2 Depan Nissan</description>
+					<LookAt>
+						<longitude>107.0745833178275</longitude>
+						<latitude>-6.266283331504198</latitude>
+						<altitude>0</altitude>
+						<heading>3.446926136036085e-13</heading>
+						<tilt>0</tilt>
+						<range>1000.330244318605</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_Logo ODP_0_0_01.20</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>107.0745833178275,-6.266283331504199,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>Cakung</name>
+			<Folder>
+				<name>Jl. Pulokambing Raya</name>
+			</Folder>
+			<Folder>
+				<name>Jl. Raya Bekasi</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan Grand Mall Cakung</description>
+					<LookAt>
+						<longitude>106.9587500000549</longitude>
+						<latitude>-6.187249999915981</latitude>
+						<altitude>0</altitude>
+						<heading>-5.913048722175859e-12</heading>
+						<tilt>0</tilt>
+						<range>999.9702047979896</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9587500000549,-6.187249999915981,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>SC Depan PT. Mahkota Indonesia - Jl. Raya Bekasi</description>
+					<LookAt>
+						<longitude>106.9211333334688</longitude>
+						<latitude>-6.182849999995804</latitude>
+						<altitude>0</altitude>
+						<heading>-1.459019824721111e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000179123501</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9211333334688,-6.182849999995804,0</coordinates>
+					</Point>
+				</Placemark>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Depan Bank BJB - Pulogadung Trade Centre</description>
+					<LookAt>
+						<longitude>106.9161000001297</longitude>
+						<latitude>-6.182650000109312</latitude>
+						<altitude>0</altitude>
+						<heading>-1.39612435589517e-11</heading>
+						<tilt>0</tilt>
+						<range>1000.000108697893</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9161000001297,-6.182650000109312,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Cakung Cilincing Barat</name>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>Jl. Cilincing Raya - Depan Komplek Puninar</description>
+					<LookAt>
+						<longitude>106.9425166666929</longitude>
+						<latitude>-6.173400000114443</latitude>
+						<altitude>0</altitude>
+						<heading>-2.815983601100761e-12</heading>
+						<tilt>0</tilt>
+						<range>1000.00020286405</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.9425166666929,-6.173400000114443,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Cililitan Besar</name>
+				<Placemark>
+					<name>SC 1 - SC 2</name>
+					<description>SC1 - SC2 Depan Toko Wamena , Jl. Cilincing Besar</description>
+					<LookAt>
+						<longitude>106.8677833000073</longitude>
+						<latitude>-6.263683300000748</latitude>
+						<altitude>0</altitude>
+						<heading>-8.013009950612148e-13</heading>
+						<tilt>0</tilt>
+						<range>1219.880709417837</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.8677833000073,-6.263683300000748,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>Cawang</name>
+			<Folder>
+				<name>Pasar Rebo</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>SC Seberang RS. Pasar Rebo</description>
+					<LookAt>
+						<longitude>106.8619999998654</longitude>
+						<latitude>-6.304499999929893</latitude>
+						<altitude>0</altitude>
+						<heading>1.479693430150624e-11</heading>
+						<tilt>0</tilt>
+						<range>1219.785947320917</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_Logo ODP_0_0_01.000</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.8619999998654,-6.304499999929893,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+			<Folder>
+				<name>Jl. Ciracas</name>
+				<Placemark>
+					<name>SC 2</name>
+					<description>Jl. Raya Bogor - Seberang GOR Ciracas</description>
+					<LookAt>
+						<longitude>106.8642500003053</longitude>
+						<latitude>-6.3245167000678</latitude>
+						<altitude>0</altitude>
+						<heading>-3.362442652309711e-11</heading>
+						<tilt>0</tilt>
+						<range>1219.775424846635</range>
+						<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+					</LookAt>
+					<styleUrl>#msn_Logo ODP_0_0_01_1.</styleUrl>
+					<Point>
+						<gx:drawOrder>1</gx:drawOrder>
+						<coordinates>106.8642500003053,-6.3245167000678,0</coordinates>
+					</Point>
+				</Placemark>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>Jatinegara</name>
+			<Folder>
+				<name>Santa Maria</name>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>Dewi Sartika</name>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan Bank BNI</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.8635166666667,-6.257516666666667,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan Andalan Cell</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.8646833333333,-6.252466666666667,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan UD Kharisma</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.8661166666667,-6.249066666666667,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan JNE</description>
+				<styleUrl>#msn_Logo ODP_0_0_01.01</styleUrl>
+				<Point>
+					<coordinates>106.8642217716081,-6.259872730829751,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Letjen MT. Haryono</name>
+			<Placemark>
+				<name>SC</name>
+				<description>Perempatan Jl. Letjen MT. Haryono</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.86775,-6.244816666666667,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan Bank Mandiri</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.8656666666667,-6.2439,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>SC</name>
+				<description>Depan Ciptagraha</description>
+				<styleUrl>#m_ylw-pushpin0000100</styleUrl>
+				<Point>
+					<coordinates>106.8612166666667,-6.242816666666666,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Matraman</name>
+			<Folder>
+				<name>Jl. Matraman Raya</name>
+			</Folder>
+		</Folder>
+		<Folder>
+			<name>Bogor</name>
+			<Placemark>
+				<name>ODP Mie Aceh</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.7770971719727</longitude>
+					<latitude>-6.556544335635458</latitude>
+					<altitude>0</altitude>
+					<heading>0.04640692600819588</heading>
+					<tilt>30.0004794144346</tilt>
+					<range>106.9482768046582</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_Logo ODP_0_0_01.210</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.7770071168482,-6.556608827168354,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>ODP Cimanggu Permai</name>
+				<LookAt>
+					<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+					<longitude>106.7847932071191</longitude>
+					<latitude>-6.55976208717853</latitude>
+					<altitude>0</altitude>
+					<heading>-0.002075044625206112</heading>
+					<tilt>0.7231705698998609</tilt>
+					<range>1451.151695168954</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_Logo ODP_0_0_01.21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>106.7883131660507,-6.560448343835883,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>XCC.kmz</name>
+	<StyleMap id="msn_ylw-pushpin0203101025376">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257170</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025672</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin02031010253760">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257170000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025672100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin02031010253760000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin02039302571700</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin02036902567211</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537600000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin020393025717</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin0203690256720</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537601">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin020393025717001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin0203690256721</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537602">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin020393025717000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin02036902567210</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin020310102537603">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#msn_ylw-pushpin0203930257170001</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#msn_ylw-pushpin020369025672101</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="msn_ylw-pushpin020369025672">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203690256720">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203690256721">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02036902567210">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020369025672100">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020369025672101">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02036902567211">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020393025717">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257170">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin02039302571700">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020393025717000">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257170000">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin0203930257170001">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="msn_ylw-pushpin020393025717001">
+		<IconStyle>
+			<scale>0.6</scale>
+			<Icon>
+				<href>files/XCC_3_2_0_1_3_1_0.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ff00</color>
+			<scale>0.6</scale>
+		</LabelStyle>
+	</Style>
+	<Folder>
+		<name>XCC</name>
+		<Placemark>
+			<name>XCC MAYOR OKING</name>
+			<LookAt>
+				<gx:ViewerOptions>
+					<gx:option enabled="0" name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>106.8749718185582</longitude>
+				<latitude>-6.485895500784961</latitude>
+				<altitude>0</altitude>
+				<heading>150.8754426761899</heading>
+				<tilt>70.33763986998288</tilt>
+				<range>7.429923647559361</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin02031010253760000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8749929523001,-6.485937007249316,6.062459854573297e-05</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC PEKAPURAN</name>
+			<LookAt>
+				<gx:ViewerOptions>
+					<gx:option enabled="0" name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>106.8904112033783</longitude>
+				<latitude>-6.406445870205236</latitude>
+				<altitude>0</altitude>
+				<heading>-131.6897336434529</heading>
+				<tilt>73.24453477017029</tilt>
+				<range>9.571500465466984</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin02031010253760</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8904305555556,-6.406425,87.22584069464169</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC CIPENDAWA</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.983349823181</longitude>
+				<latitude>-6.298514457788057</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0001082227143268228</heading>
+				<tilt>26.04808491479136</tilt>
+				<range>200.5559014019395</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin02031010253760</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.9835533867338,-6.298378892850983,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC PASAR REBO</name>
+			<styleUrl>#msn_ylw-pushpin02031010253760</styleUrl>
+			<Point>
+				<coordinates>106.8644,-6.305666666666667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC HORISON</name>
+			<styleUrl>#msn_ylw-pushpin0203101025376</styleUrl>
+			<Point>
+				<coordinates>106.99279,-6.246263,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC BANGBARUNG</name>
+			<LookAt>
+				<longitude>106.8069461968452</longitude>
+				<latitude>-6.580537146179855</latitude>
+				<altitude>0</altitude>
+				<heading>2.118492592530108e-05</heading>
+				<tilt>0</tilt>
+				<range>251.3768346923701</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin02031010253760</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8070622477771,-6.580848846392647,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC SIMPANG DEPOK</name>
+			<LookAt>
+				<longitude>106.8611186372497</longitude>
+				<latitude>-6.412055304201828</latitude>
+				<altitude>0</altitude>
+				<heading>0.2197066172127825</heading>
+				<tilt>14.98203025544985</tilt>
+				<range>339.0909045953185</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin02031010253760</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8608249456148,-6.41154728165532,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC TANJUNG BARAT</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8434643202811</longitude>
+				<latitude>-6.304924863590512</latitude>
+				<altitude>0</altitude>
+				<heading>0.2216812441250361</heading>
+				<tilt>16.72508140786453</tilt>
+				<range>624.8666098984841</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin020310102537600000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.841226,-6.303646,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC KALIMALANG</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>107.1133279047915</longitude>
+				<latitude>-6.283689841868721</latitude>
+				<altitude>0</altitude>
+				<heading>0.006646411942482879</heading>
+				<tilt>25.21416742849399</tilt>
+				<range>411.7185555170036</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin020310102537601</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>107.1131341677204,-6.283836135388088,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC HEX</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8710196892795</longitude>
+				<latitude>-6.288072130623829</latitude>
+				<altitude>0</altitude>
+				<heading>-0.09759367376576923</heading>
+				<tilt>23.38141597698095</tilt>
+				<range>216.1524632467302</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin020310102537603</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8707305209627,-6.288316966743827,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>XCC CAWANG</name>
+			<LookAt>
+				<gx:TimeStamp><when>2022-01-22T05:34:45Z</when>
+</gx:TimeStamp>
+				<longitude>106.8685588637359</longitude>
+				<latitude>-6.245109120472085</latitude>
+				<altitude>0</altitude>
+				<heading>-0.1003565458230231</heading>
+				<tilt>22.12268688633839</tilt>
+				<range>476.1029281373667</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin020310102537602</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>106.8679505137316,-6.244917891900453,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Folder>
+</Document>
+</kml>
