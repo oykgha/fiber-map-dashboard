@@ -71,6 +71,8 @@ export const FiberSegmentModal: React.FC = () => {
         if (data.attenuationRate !== undefined) patch.attenuationRate = data.attenuationRate;
         if (data.nodeA) patch.nodeA = data.nodeA;
         if (data.nodeZ) patch.nodeZ = data.nodeZ;
+        if (data.geometry && data.geometry.length > 0) patch.geometry = data.geometry;
+        if (data.sourceFile) patch.sourceFile = data.sourceFile;
         updateSegmentData(segmentId, patch);
       })
       .catch((err) => console.error('Failed to load persisted segment data:', err));
@@ -103,7 +105,12 @@ export const FiberSegmentModal: React.FC = () => {
       attenuationRate: merged.attenuationRate,
       nodeA: merged.nodeA,
       nodeZ: merged.nodeZ,
-      customDrawnGreenCoords: merged.customDrawnGreenCoords
+      // Hand-drawn/retraced shape wins if present; otherwise send whatever
+      // geometry this segment already has (set when it was selected) so
+      // every save — not just drawn ones — persists a shape the backend
+      // can use to rebuild this line on the map after a refresh.
+      geometry: merged.customDrawnGreenCoords || merged.geometry,
+      sourceFile: merged.sourceFile
     })
       .then(() => {
         setSaveSuccessMsg('✅ PERUBAHAN SEGMENT (RUTE, DATA TEKNIS & FILE .SOR) BERHASIL DISIMPAN!');
@@ -132,6 +139,28 @@ export const FiberSegmentModal: React.FC = () => {
     setIsEditingTitle(false);
   };
 
+  // Every inline "Simpan" button in this modal (trunk, technical data, core
+  // capacity chips) used to only call updateSegmentData — local Zustand
+  // state only. It looked saved (the button disappears, the new value
+  // shows), but a hard refresh before separately clicking the big "SIMPAN
+  // PERUBAHAN SEGMENT" button at the bottom lost it, since nothing had
+  // actually reached the backend. Each of those now also calls this.
+  const persistSegment = (overrides: Partial<Pick<FiberSegmentData, 'customerTrunk' | 'technicalData'>>) => {
+    const merged = { ...selectedSegment, ...overrides };
+    saveSegment(merged.id, {
+      name: merged.name,
+      lengthKm: merged.lengthKm,
+      customerTrunk: merged.customerTrunk,
+      technicalData: merged.technicalData,
+      coreCount: merged.coreCount,
+      attenuationRate: merged.attenuationRate,
+      nodeA: merged.nodeA,
+      nodeZ: merged.nodeZ,
+      geometry: merged.customDrawnGreenCoords || merged.geometry,
+      sourceFile: merged.sourceFile
+    }).catch((err) => console.error('Failed to save segment to backend:', err));
+  };
+
   const handleOpenEditTrunk = () => {
     setTrunkInput(selectedSegment.customerTrunk || '');
     setIsEditingTrunk(true);
@@ -139,6 +168,7 @@ export const FiberSegmentModal: React.FC = () => {
 
   const handleSaveTrunk = () => {
     updateSegmentData(selectedSegment.id, { customerTrunk: trunkInput });
+    persistSegment({ customerTrunk: trunkInput });
     setIsEditingTrunk(false);
   };
 
@@ -149,6 +179,7 @@ export const FiberSegmentModal: React.FC = () => {
 
   const handleSaveTechData = () => {
     updateSegmentData(selectedSegment.id, { technicalData: techDataInput });
+    persistSegment({ technicalData: techDataInput });
     setIsEditingTechData(false);
   };
 
@@ -487,6 +518,7 @@ export const FiberSegmentModal: React.FC = () => {
                         const textCores = nextCores.length > 0 ? nextCores.join(', ') : 'Belum Set';
                         const newTech = `Kapasitas Kabel: ${textCores} • Single-Mode G.652D`;
                         updateSegmentData(selectedSegment.id, { technicalData: newTech });
+                        persistSegment({ technicalData: newTech });
                       }}
                     />
                   </div>

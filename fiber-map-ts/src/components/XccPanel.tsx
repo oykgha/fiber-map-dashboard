@@ -381,12 +381,13 @@ export const XccPanel: React.FC = () => {
     setIsEditModalOpen(true);
   };
 
-  const nodeStub = (node: { name: string; coordinates: [number, number]; status: string; type?: string }): NodeStub => ({
+  const nodeStub = (node: { name: string; coordinates: [number, number]; status: string; type?: string; sourceFile?: string }): NodeStub => ({
     name: node.name,
     nodeType: node.type,
     longitude: node.coordinates[0],
     latitude: node.coordinates[1],
-    status: node.status
+    status: node.status,
+    sourceFile: node.sourceFile
   });
 
   const handleSaveEditModal = () => {

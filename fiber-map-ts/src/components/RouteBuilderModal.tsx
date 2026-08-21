@@ -92,7 +92,9 @@ export const RouteBuilderModal: React.FC = () => {
     const segData = getOrCreateSegmentData(
       selected.id,
       selected.name,
-      selected.distanceKm
+      selected.distanceKm,
+      selected.coordinates,
+      'Route Builder'
     );
 
     segData.nodeA = routeBuilder.pointA.label || 'Point A';

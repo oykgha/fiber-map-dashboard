@@ -439,38 +439,108 @@ at 18) were untouched, and `DWD.kmz` correctly disappeared from
 - **`otdr_events`** — the table for individual fault/splice/bend events
   within a trace exists but nothing writes to it yet (depends on real
   `.SOR` parsing above).
-- **Custom-uploaded KMZ files don't survive a page refresh.** The default 5
-  KMZ files (`DWD.kmz`, `POP.kmz`, `XCC.kmz`, `ODP.kmz`, `backbone.kmz`) are
-  fetched from static assets on every mount, so they always reappear. A
-  file the user imports via "IMPOR FILE .KMZ" is only ever merged into
-  local Zustand state (`setNodes`/`setGeoData`) — there's no re-fetch
-  mechanism for it, so on refresh its routes/nodes vanish from the map
-  entirely, even though the routes' segment data was already saved to
-  Postgres via `saveSegment` in `KmzImportSetupModal.tsx` (and would
-  rehydrate correctly *if* the route ever became clickable again — it just
-  can't, since the line isn't on the map to click). The backend has no
-  concept of "this raw KMZ file was uploaded" at all, only the derived
-  segment/node data touched so far. Fixing this properly needs the backend
-  to store the uploaded file itself (or its parsed feature set) and an
-  endpoint the frontend can call on mount to re-merge every previously
-  confirmed import, alongside the default 5 — a real feature, not a small
-  bug fix, so left undone rather than attempted as a drive-by change.
-- **Full node sync from KMZ to backend** — the `nodes` table only gets
-  populated lazily, one row at a time, whenever something about that node
-  gets saved (see "Node stub" note below). There's no bulk import of the
-  KMZ-derived node list into Postgres yet.
 - No auth on the API — fine for local dev, not for anything public.
+
+## Major feature: everything now survives a page refresh
+
+Previously, refreshing felt like it reset the database — it didn't (Postgres
+was untouched), but the frontend had no way to *rebuild* the map from
+anything except the 5 static default KMZ files, so a custom-uploaded file's
+nodes/routes, a "Gambar Rute" retraced path, etc. would vanish from view
+even though (some of) the underlying data was safely saved. Fixed properly,
+not patched around:
+
+**Schema** — added `source_file TEXT` to both `nodes` and `fiber_segments`
+(migration applied directly via `psql`, also in `schema.sql` for anyone
+setting up fresh) so a database-reloaded node/route still knows which KMZ
+file it belongs to, for the KMZ Files sidebar panel's grouping/hide/
+highlight/delete to keep working. `fiber_segments.drawn_route_coordinates`
+now gets populated for **every** segment save, not just hand-drawn ones —
+it's the segment's current line shape regardless of where it came from.
+
+**Backend** —
+- `GET /api/segments` (new) — every segment with a saved geometry, for
+  startup reload.
+- `GET /api/nodes` (already existed, but the frontend never called it
+  until now) — every node ever saved.
+- `SaveSegmentRequest`/`SegmentResponse` — added `geometry` (`[lng,lat]`
+  pairs) and `sourceFile`, both persisted/returned on every save/read, not
+  just drawn routes.
+- `NodeStub`/`upsertNodeStub` — added `sourceFile`, persisted via
+  `COALESCE` so a save that doesn't know it doesn't wipe an existing one.
+- Found and fixed a real, unrelated, pre-existing bug while wiring the
+  bulk node-upsert for KMZ import confirm: **`withCORS`'s
+  `Access-Control-Allow-Methods` never included `PATCH`**, so `PATCH
+  /api/nodes/{id}` (node rename) had been silently CORS-blocked in the
+  browser this entire time — confirmed via a real failing `fetch` in
+  Playwright's console output before the fix, zero errors after. This
+  wasn't just breaking the new bulk-import code — it means node renames
+  via the XCC panel likely never actually reached the backend either.
+  Fixed by adding `PATCH` to the allow-list.
+- Per a later request, all three `PUT` endpoints (`/api/segments/{id}`,
+  `/api/xcc/{xccId}/ports/{group}/{number}`, `/api/xcc/{xccId}/trays/
+  {index}`) were changed to `POST` — `PUT` removed from the CORS allow-list
+  entirely. `PATCH /api/nodes/{id}` (rename) was deliberately left as-is.
+
+**Frontend** —
+- `FiberSegmentData` gained `geometry`/`sourceFile` fields, set whenever a
+  segment is selected (map click, KMZ import confirm, Route Builder) and
+  sent on every `saveSegment` call — `FiberSegmentModal`'s save button no
+  longer only sends geometry for hand-drawn routes.
+- `getOrCreateSegmentData` takes optional `geometry`/`sourceFile` params
+  and fills them in on an existing record if it doesn't have them yet,
+  without overwriting anything already there.
+- `finishDrawingGreenLine` (Gambar Rute) now **auto-saves to the backend
+  immediately** on finish, instead of requiring a separate trip into
+  FiberSegmentModal to hit "SIMPAN PERUBAHAN SEGMENT" afterward. It also
+  now correctly preserves the segment's existing `sourceFile` through a
+  retrace instead of relabeling it "Gambar Rute Custom" every time.
+  (This was in addition to the earlier fix that made the drawn shape
+  render on the map at all — see the "Gambar Rute" bug entry above.)
+- `KmzImportSetupModal`'s confirm handler now also bulk-upserts every
+  imported **node** to the backend (reusing the rename endpoint, which
+  just upserts whatever `NodeStub` it's given) — previously only routes
+  were saved on import; nodes were never persisted unless individually
+  touched afterward (renamed, XCC port/tray edit).
+- On mount, `FiberMap.tsx` now fetches `listNodes()`/`listSegments()` in
+  parallel with the 5 default KMZ files and **merges** the results in:
+  - A node/segment whose id matches something from the default files gets
+    its name/status/geometry refreshed from the database (picks up
+    renames/retraces); anything with no default-file match is added as a
+    new entry, tagged with its saved `sourceFile`.
+  - Matching for segments reuses `resolveLineFeatureId` — the exact same
+    id-resolution logic `linesGeoJson` uses for rendering — so a
+    database-saved segment correctly finds (and replaces the geometry of)
+    its corresponding raw KMZ feature instead of ending up as a duplicate
+    line.
+  - The merge is resilient to the backend being down (`.catch(() => [])`
+    on both fetches) — the default 5 files still load normally either way.
+
+**Verified live**, in this order, each via Playwright with a real
+page reload in between: (1) set a segment's customer/technical data +
+core capacity, saved, refreshed, re-clicked — confirmed correct. (2)
+uploaded a `.sor` file, refreshed, re-opened the segment — file still
+listed. (3) drew a custom path over an existing cable (auto-save),
+refreshed — the new hand-drawn shape (not the original KMZ shape)
+rendered immediately, `sourceFile` preserved as `backbone.kmz` not
+relabeled. (4) imported a custom `.kml` file (`doc_xcc.kml` — 11 nodes;
+`doc_backbone.kml` — 9 routes), refreshed — every node and route
+reappeared automatically with real names, and `knownKmzFiles` correctly
+listed the custom files alongside the 5 defaults. All test data created
+during this verification (a dummy `.sor` upload, the two test KMZ
+imports, and the reused test segment's temporary customer/technical
+data) was cleaned up from Postgres afterward via `psql`.
 
 ## Node stub note (read this before touching `xcc.go` / `segments.go`)
 
-The backend's `nodes` table doesn't get bulk-populated from KMZ — it only
-learns about a node the first time something related to it is saved (a
-segment, an XCC port, a rename). Every save endpoint that touches a node
-therefore also upserts a minimal "node stub" (id/name/type/coords/status)
-passed up from the frontend, to satisfy the foreign key. This is a
-deliberate shortcut, not an oversight — see `backend/internal/api/xcc.go`
-`upsertNodeStub`. Building a real "sync all nodes" endpoint would let this
-go away.
+The backend's `nodes` table used to only learn about a node the first time
+something related to it was individually saved (a segment, an XCC port, a
+rename) — see the feature above for how KMZ import confirm now also
+bulk-upserts every node up front, which covers most of this in practice.
+Every save endpoint that touches a node still also upserts a minimal "node
+stub" (id/name/type/coords/status/sourceFile) passed up from the frontend,
+to satisfy the foreign key — see `backend/internal/api/xcc.go`
+`upsertNodeStub`.
 
 ## Dependencies
 

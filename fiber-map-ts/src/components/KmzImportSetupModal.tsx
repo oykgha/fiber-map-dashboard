@@ -4,7 +4,7 @@ import { X, MapPin, Route, CheckCircle2, Server, Radio, Box, Hexagon } from 'luc
 import { useAppStore, type NodeData } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
 import { stableSegmentId } from '../utils/segmentId';
-import { saveSegment } from '../utils/api';
+import { saveSegment, renameNode } from '../utils/api';
 import { CoreCapacityPicker } from './CoreCapacityPicker';
 
 const NODE_TYPE_ICON: Record<string, React.ReactNode> = {
@@ -79,10 +79,14 @@ export const KmzImportSetupModal: React.FC<KmzImportSetupModalProps> = ({
       });
     }
 
-    const saves = pending.routes.map((route, idx) => {
+    const routeSaves = pending.routes.map((route, idx) => {
       const id = stableSegmentId(route.name, route.geometry);
+      const geometry: [number, number][] | undefined =
+        route.geometry.type === 'LineString' ? (route.geometry.coordinates as [number, number][])
+        : route.geometry.type === 'MultiLineString' ? (route.geometry.coordinates as [number, number][][]).flat(1)
+        : undefined;
       const cores = coresByRoute[idx] || [];
-      const segData = getOrCreateSegmentData(id, route.name, route.lengthKm);
+      const segData = getOrCreateSegmentData(id, route.name, route.lengthKm, geometry, pending.fileName);
       const technicalData = cores.length > 0
         ? `Kapasitas Kabel: ${cores.join(', ')} • Single-Mode G.652D`
         : segData.technicalData;
@@ -94,11 +98,30 @@ export const KmzImportSetupModal: React.FC<KmzImportSetupModalProps> = ({
       return saveSegment(id, {
         name: route.name,
         lengthKm: route.lengthKm,
-        technicalData
+        technicalData,
+        geometry,
+        sourceFile: pending.fileName
       }).catch((err) => console.error(`Failed to save imported route "${route.name}" to backend:`, err));
     });
 
-    await Promise.all(saves);
+    // Nodes are otherwise only ever saved lazily (rename, XCC port/tray
+    // edit) — a custom-imported node that's never individually touched
+    // would have no backend row at all, so it can't come back after a
+    // refresh. Upserting every node here (reusing the rename endpoint,
+    // which just upserts whatever NodeStub it's given) means the whole
+    // import survives a reload, not just whatever got clicked afterward.
+    const nodeSaves = pending.nodes.map((node) =>
+      renameNode(node.id, {
+        name: node.name,
+        nodeType: node.type,
+        longitude: node.coordinates[0],
+        latitude: node.coordinates[1],
+        status: node.status,
+        sourceFile: pending.fileName
+      }).catch((err) => console.error(`Failed to save imported node "${node.name}" to backend:`, err))
+    );
+
+    await Promise.all([...routeSaves, ...nodeSaves]);
 
     setIsSaving(false);
     setCoresByRoute({});

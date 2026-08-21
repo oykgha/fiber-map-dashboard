@@ -10,7 +10,12 @@ export interface SaveSegmentPayload {
   nodeA?: string;
   nodeZ?: string;
   coreCapacity?: string;
-  customDrawnGreenCoords?: [number, number][];
+  // This cable's current line shape as [lng, lat] pairs — sent on every
+  // save (not just hand-drawn/retraced ones) so the backend can rebuild
+  // this line on the map after a refresh. See segmentId.ts/FiberMap.tsx's
+  // resolveLineFeatureId for how this stays linked to the same segment id.
+  geometry?: [number, number][];
+  sourceFile?: string;
 }
 
 export interface SorFileResponse {
@@ -35,6 +40,9 @@ export interface SegmentResponse {
   attenuationRate?: number;
   nodeA?: string;
   nodeZ?: string;
+  coreCapacity?: string;
+  geometry?: [number, number][];
+  sourceFile?: string;
   sorFiles: SorFileResponse[];
 }
 
@@ -48,9 +56,21 @@ export async function getSegment(id: string): Promise<SegmentResponse | null> {
   return res.json();
 }
 
+// Every segment that has a geometry saved — used on app startup to rebuild
+// routes that don't come from the 5 default KMZ files (custom uploads,
+// "Gambar Rute" drawn/retraced paths).
+export async function listSegments(): Promise<SegmentResponse[]> {
+  const res = await fetch(`${API_BASE_URL}/api/segments`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`Failed to list segments (${res.status}): ${body}`);
+  }
+  return res.json();
+}
+
 export async function saveSegment(id: string, payload: SaveSegmentPayload): Promise<void> {
   const res = await fetch(`${API_BASE_URL}/api/segments/${encodeURIComponent(id)}`, {
-    method: 'PUT',
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
@@ -67,9 +87,31 @@ export interface NodeStub {
   longitude: number;
   latitude: number;
   status?: string;
+  sourceFile?: string;
 }
 
-async function putOrPatch(method: 'PUT' | 'PATCH', path: string, body: unknown): Promise<void> {
+export interface NodeListItem {
+  id: string;
+  name: string;
+  node_type: string;
+  longitude: number;
+  latitude: number;
+  status: string;
+  sourceFile?: string;
+}
+
+// Every node ever saved — used on app startup to rebuild nodes that don't
+// come from the 5 default KMZ files.
+export async function listNodes(): Promise<NodeListItem[]> {
+  const res = await fetch(`${API_BASE_URL}/api/nodes`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`Failed to list nodes (${res.status}): ${body}`);
+  }
+  return res.json();
+}
+
+async function putOrPatch(method: 'POST' | 'PATCH', path: string, body: unknown): Promise<void> {
   const res = await fetch(`${API_BASE_URL}${path}`, {
     method,
     headers: { 'Content-Type': 'application/json' },
@@ -103,7 +145,7 @@ export function saveXccPort(
   payload: SaveXccPortPayload
 ): Promise<void> {
   return putOrPatch(
-    'PUT',
+    'POST',
     `/api/xcc/${encodeURIComponent(xccId)}/ports/${group}/${portNumber}`,
     payload
   );
@@ -116,7 +158,7 @@ export interface SaveXccTrayPayload {
 }
 
 export function saveXccTray(xccId: string, trayIndex: number, payload: SaveXccTrayPayload): Promise<void> {
-  return putOrPatch('PUT', `/api/xcc/${encodeURIComponent(xccId)}/trays/${trayIndex}`, payload);
+  return putOrPatch('POST', `/api/xcc/${encodeURIComponent(xccId)}/trays/${trayIndex}`, payload);
 }
 
 export interface XccPortResponse {
@@ -193,5 +235,17 @@ export async function deleteSorFile(id: string): Promise<void> {
   if (!res.ok) {
     const text = await res.text().catch(() => '');
     throw new Error(`Failed to delete .sor file (${res.status}): ${text}`);
+  }
+}
+
+// Permanently removes every node and segment saved under this source file —
+// without this, deleting a KMZ file from the sidebar panel only removed it
+// from the current tab's view; the next refresh pulled it right back in
+// from the database.
+export async function deleteKmzFile(fileName: string): Promise<void> {
+  const res = await fetch(`${API_BASE_URL}/api/kmz-files/${encodeURIComponent(fileName)}`, { method: 'DELETE' });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Failed to delete KMZ file (${res.status}): ${text}`);
   }
 }

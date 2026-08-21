@@ -22,7 +22,13 @@ type SaveSegmentRequest struct {
 	NodeA                  string      `json:"nodeA"`
 	NodeZ                  string      `json:"nodeZ"`
 	CoreCapacity           string      `json:"coreCapacity"`
-	CustomDrawnGreenCoords [][]float64 `json:"customDrawnGreenCoords"`
+	// This cable's current line geometry as [[lng, lat], ...] — sent on
+	// EVERY save now, not just hand-drawn/retraced ones, so the frontend
+	// can rebuild this line on the map after a refresh without needing the
+	// original KMZ file again. See drawn_route_coordinates's comment in
+	// schema.sql.
+	Geometry   [][]float64 `json:"geometry"`
+	SourceFile string      `json:"sourceFile"`
 }
 
 var nonSlugChars = regexp.MustCompile(`[^a-z0-9]+`)
@@ -80,23 +86,27 @@ func (s *Server) handleSaveSegment(w http.ResponseWriter, r *http.Request) {
 		customerID = &returnedID
 	}
 
-	var drawnRouteJSON any
-	if len(req.CustomDrawnGreenCoords) > 0 {
-		b, err := json.Marshal(req.CustomDrawnGreenCoords)
+	var geometryJSON any
+	if len(req.Geometry) > 0 {
+		b, err := json.Marshal(req.Geometry)
 		if err != nil {
 			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
 			return
 		}
-		drawnRouteJSON = b
+		geometryJSON = b
+	}
+	var sourceFile *string
+	if req.SourceFile != "" {
+		sourceFile = &req.SourceFile
 	}
 
 	_, err = tx.Exec(ctx, `
 		INSERT INTO fiber_segments (
 			id, name, length_km, customer_id, technical_data, core_count,
 			attenuation_rate_db_per_km, node_a_label, node_z_label, core_capacity,
-			drawn_route_coordinates
+			drawn_route_coordinates, source_file
 		)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NULLIF($10, ''), $11)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NULLIF($10, ''), $11, $12)
 		ON CONFLICT (id) DO UPDATE SET
 			name = EXCLUDED.name,
 			length_km = COALESCE(EXCLUDED.length_km, fiber_segments.length_km),
@@ -108,9 +118,10 @@ func (s *Server) handleSaveSegment(w http.ResponseWriter, r *http.Request) {
 			node_z_label = COALESCE(NULLIF(EXCLUDED.node_z_label, ''), fiber_segments.node_z_label),
 			core_capacity = COALESCE(EXCLUDED.core_capacity, fiber_segments.core_capacity),
 			drawn_route_coordinates = COALESCE(EXCLUDED.drawn_route_coordinates, fiber_segments.drawn_route_coordinates),
+			source_file = COALESCE(EXCLUDED.source_file, fiber_segments.source_file),
 			updated_at = now()
 	`, id, req.Name, req.LengthKm, customerID, req.TechnicalData, req.CoreCount,
-		req.AttenuationRateDbPerKm, req.NodeA, req.NodeZ, req.CoreCapacity, drawnRouteJSON)
+		req.AttenuationRateDbPerKm, req.NodeA, req.NodeZ, req.CoreCapacity, geometryJSON, sourceFile)
 	if err != nil {
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "save segment: " + err.Error()})
 		return
@@ -137,16 +148,19 @@ type SorFileResponse struct {
 }
 
 type SegmentResponse struct {
-	ID              string             `json:"id"`
-	Name            string             `json:"name"`
-	LengthKm        *float64           `json:"lengthKm,omitempty"`
-	CustomerTrunk   string             `json:"customerTrunk,omitempty"`
-	TechnicalData   string             `json:"technicalData,omitempty"`
-	CoreCount       *int               `json:"coreCount,omitempty"`
-	AttenuationRate *float64           `json:"attenuationRate,omitempty"`
-	NodeA           string             `json:"nodeA,omitempty"`
-	NodeZ           string             `json:"nodeZ,omitempty"`
-	SorFiles        []SorFileResponse  `json:"sorFiles"`
+	ID              string            `json:"id"`
+	Name            string            `json:"name"`
+	LengthKm        *float64          `json:"lengthKm,omitempty"`
+	CustomerTrunk   string            `json:"customerTrunk,omitempty"`
+	TechnicalData   string            `json:"technicalData,omitempty"`
+	CoreCount       *int              `json:"coreCount,omitempty"`
+	AttenuationRate *float64          `json:"attenuationRate,omitempty"`
+	NodeA           string            `json:"nodeA,omitempty"`
+	NodeZ           string            `json:"nodeZ,omitempty"`
+	CoreCapacity    string            `json:"coreCapacity,omitempty"`
+	Geometry        [][]float64       `json:"geometry,omitempty"`
+	SourceFile      string            `json:"sourceFile,omitempty"`
+	SorFiles        []SorFileResponse `json:"sorFiles"`
 }
 
 // handleGetSegment is the read-path counterpart to handleSaveSegment — until
@@ -165,15 +179,19 @@ func (s *Server) handleGetSegment(w http.ResponseWriter, r *http.Request) {
 	var coreCount *int
 	var attenuationRate *float64
 	var nodeA, nodeZ *string
+	var coreCapacity *string
+	var geometryRaw []byte
+	var sourceFile *string
 
 	err := s.DB.QueryRow(ctx, `
 		SELECT s.id, s.name, s.length_km, c.trunk_name, s.technical_data,
-		       s.core_count, s.attenuation_rate_db_per_km, s.node_a_label, s.node_z_label
+		       s.core_count, s.attenuation_rate_db_per_km, s.node_a_label, s.node_z_label,
+		       s.core_capacity, s.drawn_route_coordinates, s.source_file
 		FROM fiber_segments s
 		LEFT JOIN customers c ON c.id = s.customer_id
 		WHERE s.id = $1
 	`, id).Scan(&resp.ID, &resp.Name, &lengthKm, &customerTrunk, &technicalData,
-		&coreCount, &attenuationRate, &nodeA, &nodeZ)
+		&coreCount, &attenuationRate, &nodeA, &nodeZ, &coreCapacity, &geometryRaw, &sourceFile)
 
 	if errors.Is(err, pgx.ErrNoRows) {
 		writeJSON(w, http.StatusNotFound, map[string]string{"error": "segment not found"})
@@ -193,6 +211,18 @@ func (s *Server) handleGetSegment(w http.ResponseWriter, r *http.Request) {
 	}
 	resp.CoreCount = coreCount
 	resp.AttenuationRate = attenuationRate
+	if coreCapacity != nil {
+		resp.CoreCapacity = *coreCapacity
+	}
+	if sourceFile != nil {
+		resp.SourceFile = *sourceFile
+	}
+	if len(geometryRaw) > 0 {
+		if err := json.Unmarshal(geometryRaw, &resp.Geometry); err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "decode geometry: " + err.Error()})
+			return
+		}
+	}
 	if nodeA != nil {
 		resp.NodeA = *nodeA
 	}
@@ -238,4 +268,82 @@ func (s *Server) handleGetSegment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusOK, resp)
+}
+
+// GET /api/segments — every segment that has a geometry saved, used by the
+// frontend on startup to rebuild routes that don't come from the 5 default
+// KMZ files (custom uploads, "Gambar Rute" drawn/retraced paths). Segments
+// with no geometry are skipped — there'd be nothing to draw for them, e.g.
+// a segment that only ever got touched via a .sor upload before this
+// feature existed.
+func (s *Server) handleListSegments(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+
+	rows, err := s.DB.Query(ctx, `
+		SELECT s.id, s.name, s.length_km, c.trunk_name, s.technical_data,
+		       s.core_count, s.attenuation_rate_db_per_km, s.node_a_label, s.node_z_label,
+		       s.core_capacity, s.drawn_route_coordinates, s.source_file
+		FROM fiber_segments s
+		LEFT JOIN customers c ON c.id = s.customer_id
+		WHERE s.drawn_route_coordinates IS NOT NULL
+		ORDER BY s.name
+	`)
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+		return
+	}
+	defer rows.Close()
+
+	segments := []SegmentResponse{}
+	for rows.Next() {
+		var resp SegmentResponse
+		var lengthKm *float64
+		var customerTrunk *string
+		var technicalData *string
+		var coreCount *int
+		var attenuationRate *float64
+		var nodeA, nodeZ *string
+		var coreCapacity *string
+		var geometryRaw []byte
+		var sourceFile *string
+
+		if err := rows.Scan(&resp.ID, &resp.Name, &lengthKm, &customerTrunk, &technicalData,
+			&coreCount, &attenuationRate, &nodeA, &nodeZ, &coreCapacity, &geometryRaw, &sourceFile); err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+			return
+		}
+
+		resp.LengthKm = lengthKm
+		if customerTrunk != nil {
+			resp.CustomerTrunk = *customerTrunk
+		}
+		if technicalData != nil {
+			resp.TechnicalData = *technicalData
+		}
+		resp.CoreCount = coreCount
+		resp.AttenuationRate = attenuationRate
+		if nodeA != nil {
+			resp.NodeA = *nodeA
+		}
+		if nodeZ != nil {
+			resp.NodeZ = *nodeZ
+		}
+		if coreCapacity != nil {
+			resp.CoreCapacity = *coreCapacity
+		}
+		if sourceFile != nil {
+			resp.SourceFile = *sourceFile
+		}
+		if len(geometryRaw) > 0 {
+			if err := json.Unmarshal(geometryRaw, &resp.Geometry); err != nil {
+				writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "decode geometry: " + err.Error()})
+				return
+			}
+		}
+		resp.SorFiles = []SorFileResponse{}
+
+		segments = append(segments, resp)
+	}
+
+	writeJSON(w, http.StatusOK, segments)
 }

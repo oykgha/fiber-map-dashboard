@@ -89,6 +89,18 @@ export interface FiberSegmentData {
   nodeZ?: string;
   customDrawnGreenCoords?: [number, number][];
   sorFiles: SorFileRecord[];
+  // This cable's current line shape as [lng, lat] pairs — set whenever the
+  // segment is selected (map click, KMZ import confirm, backend reload) or
+  // redrawn, so FiberSegmentModal's save button always has a geometry to
+  // send to the backend, not just for hand-drawn/retraced routes. Falls
+  // back to customDrawnGreenCoords when both are present (the more recent
+  // hand-drawn shape wins).
+  geometry?: [number, number][];
+  // Which KMZ file this segment came from (or the uploaded filename for a
+  // custom import) — carried through to the backend save so a
+  // database-reloaded route still groups correctly under the KMZ Files
+  // sidebar panel.
+  sourceFile?: string;
 }
 
 export interface SegmentPointPickerState {
@@ -176,7 +188,7 @@ interface AppState {
   startDrawingGreenLine: (segmentId?: string) => void;
   addGreenLinePoint: (coord: [number, number]) => void;
   undoGreenLinePoint: () => void;
-  finishDrawingGreenLine: (customRouteCoords?: [number, number][], customDistanceKm?: number) => { id: string; name: string } | null;
+  finishDrawingGreenLine: (customRouteCoords?: [number, number][], customDistanceKm?: number) => { id: string; name: string; sourceFile?: string } | null;
   cancelDrawingGreenLine: () => void;
 
   segmentPointPickerState: SegmentPointPickerState | null;
@@ -194,7 +206,17 @@ interface AppState {
   clearSelectedSegments: () => void;
 
   segmentStoreMap: Record<string, FiberSegmentData>;
-  getOrCreateSegmentData: (id: string, name: string, lengthKm: number) => FiberSegmentData;
+  getOrCreateSegmentData: (id: string, name: string, lengthKm: number, geometry?: [number, number][], sourceFile?: string) => FiberSegmentData;
+  // Bulk-populates segmentStoreMap from the backend on startup. Without
+  // this, a line's shape/position comes back correctly after a refresh
+  // (geoData gets rebuilt from the database on mount) but its CORE
+  // CAPACITY COLOR doesn't — that's driven by segmentStoreMap, a separate
+  // cache that otherwise only ever gets filled in lazily, one segment at a
+  // time, the moment a line is individually clicked. Every line looked
+  // "Belum Diset" (unset/gray) after every refresh until clicked, even
+  // though the real core capacity was sitting correctly in Postgres the
+  // whole time.
+  hydrateSegments: (segments: FiberSegmentData[]) => void;
 
   // Per-KMZ-file visibility & highlight, driven by the left sidebar's KMZ
   // Files panel. kmzFileVisibility only needs entries for files that are
@@ -442,6 +464,8 @@ export const useAppStore = create<AppState>((set, get) => ({
       nodeA: pointA,
       nodeZ: pointZ,
       customDrawnGreenCoords: coords,
+      geometry: coords,
+      sourceFile: existingSeg?.sourceFile || 'Gambar Rute Custom',
       sorFiles: existingSeg?.sorFiles || []
     };
 
@@ -457,7 +481,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       }
     }));
 
-    return { id: segId, name: segName };
+    return { id: segId, name: segName, sourceFile: updatedSeg.sourceFile };
   },
 
   cancelDrawingGreenLine: () => set({
@@ -517,7 +541,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   clearSelectedSegments: () => set({ selectedSegments: [] }),
 
   segmentStoreMap: {},
-  getOrCreateSegmentData: (id, name, lengthKm) => {
+  getOrCreateSegmentData: (id, name, lengthKm, geometry, sourceFile) => {
     const state = get();
     // id-only lookup — must NOT fall back to name. Many raw KMZ cable lines
     // share the same generic placeholder name ("Untitled Path"), and id is
@@ -529,7 +553,23 @@ export const useAppStore = create<AppState>((set, get) => ({
     // of them is clicked — editing one's core capacity/technical data then
     // edits all of them, since they're literally the same object.
     const existing = state.segmentStoreMap[id];
-    if (existing) return existing;
+    if (existing) {
+      // Fill in geometry/sourceFile if this record was created earlier
+      // without them (e.g. only ever touched via an XCC interaction) and
+      // the caller now has them — doesn't overwrite an existing value.
+      if ((geometry && !existing.geometry) || (sourceFile && !existing.sourceFile)) {
+        const updated: FiberSegmentData = {
+          ...existing,
+          geometry: existing.geometry || geometry,
+          sourceFile: existing.sourceFile || sourceFile
+        };
+        set((s) => ({
+          segmentStoreMap: { ...s.segmentStoreMap, [id]: updated, [updated.name]: updated }
+        }));
+        return updated;
+      }
+      return existing;
+    }
 
     const newSeg: FiberSegmentData = {
       id: id || `seg-${Date.now()}`,
@@ -537,7 +577,9 @@ export const useAppStore = create<AppState>((set, get) => ({
       lengthKm,
       customerTrunk: '',
       technicalData: '',
-      sorFiles: []
+      sorFiles: [],
+      geometry,
+      sourceFile
     };
 
     set((s) => ({
@@ -550,6 +592,20 @@ export const useAppStore = create<AppState>((set, get) => ({
 
     return newSeg;
   },
+
+  hydrateSegments: (segments) => set((s) => {
+    const newMap = { ...s.segmentStoreMap };
+    segments.forEach((seg) => {
+      // Don't clobber a record that's already there (e.g. the user already
+      // clicked this exact line earlier in the same session and possibly
+      // has newer local edits) — this is a startup fill-in for lines that
+      // haven't been touched yet this session, not an overwrite.
+      if (newMap[seg.id]) return;
+      newMap[seg.id] = seg;
+      newMap[seg.name] = seg;
+    });
+    return { segmentStoreMap: newMap };
+  }),
 
   kmzFileVisibility: {},
   toggleKmzFileVisibility: (fileName) => set((state) => ({

@@ -16,12 +16,13 @@ import (
 // (parsed client-side from KMZ) — the backend has never seen them until
 // the first time something about them gets saved.
 type NodeStub struct {
-	ID        string  `json:"id"`
-	Name      string  `json:"name"`
-	NodeType  string  `json:"nodeType"`
-	Longitude float64 `json:"longitude"`
-	Latitude  float64 `json:"latitude"`
-	Status    string  `json:"status"`
+	ID         string  `json:"id"`
+	Name       string  `json:"name"`
+	NodeType   string  `json:"nodeType"`
+	Longitude  float64 `json:"longitude"`
+	Latitude   float64 `json:"latitude"`
+	Status     string  `json:"status"`
+	SourceFile string  `json:"sourceFile"`
 }
 
 func upsertNodeStub(ctx context.Context, tx pgx.Tx, n NodeStub) error {
@@ -29,16 +30,21 @@ func upsertNodeStub(ctx context.Context, tx pgx.Tx, n NodeStub) error {
 	if status == "" {
 		status = "normal"
 	}
+	var sourceFile *string
+	if n.SourceFile != "" {
+		sourceFile = &n.SourceFile
+	}
 	_, err := tx.Exec(ctx, `
-		INSERT INTO nodes (id, name, node_type, longitude, latitude, status)
-		VALUES ($1, $2, $3, $4, $5, $6)
+		INSERT INTO nodes (id, name, node_type, longitude, latitude, status, source_file)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
 		ON CONFLICT (id) DO UPDATE SET
 			name = EXCLUDED.name,
 			longitude = EXCLUDED.longitude,
 			latitude = EXCLUDED.latitude,
 			status = EXCLUDED.status,
+			source_file = COALESCE(EXCLUDED.source_file, nodes.source_file),
 			updated_at = now()
-	`, n.ID, n.Name, n.NodeType, n.Longitude, n.Latitude, status)
+	`, n.ID, n.Name, n.NodeType, n.Longitude, n.Latitude, status, sourceFile)
 	return err
 }
 

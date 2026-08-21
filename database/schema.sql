@@ -44,6 +44,7 @@ CREATE TABLE nodes (
     attenuation_db    DOUBLE PRECISION,
     segment_label     TEXT,
     technician_notes  TEXT,
+    source_file       TEXT,
     created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at        TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -51,6 +52,7 @@ COMMENT ON TABLE nodes IS 'A single physical network asset marker on the map: a 
 COMMENT ON COLUMN nodes.node_type IS 'Asset category: ODC (distribution cabinet), XCC (cross-connect cabinet), POP (point of presence), ODP (optical distribution point), HH (handhole), Tiang (utility pole).';
 COMMENT ON COLUMN nodes.segment_label IS 'Free-text segment/group label carried over from KMZ import — not a foreign key to fiber_segments.';
 COMMENT ON COLUMN nodes.status_handling IS 'Alert triage state, only meaningful when status is warning or critical.';
+COMMENT ON COLUMN nodes.source_file IS 'Which KMZ file this node came from (e.g. "POP.kmz", or the uploaded filename for a custom import) — lets the frontend rebuild the KMZ Files sidebar panel and per-file hide/highlight/delete after a page reload, without needing the original file again.';
 
 CREATE INDEX idx_nodes_node_type ON nodes(node_type);
 CREATE INDEX idx_nodes_status ON nodes(status);
@@ -70,12 +72,14 @@ CREATE TABLE fiber_segments (
     node_z_label             TEXT,
     core_capacity            TEXT CHECK (core_capacity IN ('kabel12', 'kabel24', 'kabel48', 'kabel96')),
     drawn_route_coordinates  JSONB,
+    source_file              TEXT,
     created_at               TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at               TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 COMMENT ON TABLE fiber_segments IS 'A single fiber cable run (segment), identified by id, connecting node_a to node_z. Central table for FiberSegmentModal data. Note: name is NOT unique — many raw KMZ cable lines have no name and share a generic placeholder like "Untitled Path" until a user renames them.';
 COMMENT ON COLUMN fiber_segments.core_capacity IS 'Cable capacity classification used for map line color/thickness: kabel12/24/48/96 = 12/24/48/96-core cable.';
-COMMENT ON COLUMN fiber_segments.drawn_route_coordinates IS 'JSON array of [longitude, latitude] pairs for manually-drawn or road-snapped cable routes (Route Builder / Drawing Mode). Null if the route comes only from the original KMZ import.';
+COMMENT ON COLUMN fiber_segments.drawn_route_coordinates IS 'JSON array of [longitude, latitude] pairs describing this cable''s current line geometry on the map — saved for EVERY segment (not just hand-drawn ones) so the frontend can rebuild the map from the database on page load instead of only from the original KMZ file. Manually-drawn/road-snapped routes (Route Builder / Drawing Mode) overwrite this with their new path; a segment that was never retraced still gets its original KMZ-derived geometry saved here the first time it''s saved.';
+COMMENT ON COLUMN fiber_segments.source_file IS 'Which KMZ file this route came from (e.g. "DWD.kmz", or the uploaded filename for a custom import) — same purpose as nodes.source_file.';
 COMMENT ON COLUMN fiber_segments.node_a_label IS 'Free-text label for the route start point (not a foreign key — may be a coordinate string, not an actual nodes.id).';
 COMMENT ON COLUMN fiber_segments.node_z_label IS 'Free-text label for the route end point (not a foreign key — may be a coordinate string, not an actual nodes.id).';
 

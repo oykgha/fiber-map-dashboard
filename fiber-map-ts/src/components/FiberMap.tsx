@@ -10,7 +10,8 @@ import { useAppStore, type NodeData, type RouteCandidateOption, type PendingKmzR
 import { useShallow } from 'zustand/react/shallow';
 import { MapFilterLegendPanel } from './MapFilterLegendPanel';
 import { NodeMarkerContent } from './NodeMarkerContent';
-import { saveXccTray } from '../utils/api';
+import { saveXccTray, saveSegment, listNodes, listSegments } from '../utils/api';
+import { getDeletedDefaultKmzFiles } from '../utils/deletedKmzFiles';
 
 // Only-render-when-opened popups/modals — lazy-loaded to keep their JS out
 // of the initial bundle (same reasoning as App.tsx's lazy modals).
@@ -331,6 +332,7 @@ export const FiberMap: React.FC = () => {
     toggleSelectSegment,
     segmentStoreMap,
     getOrCreateSegmentData,
+    hydrateSegments,
     setOverlappingSegments,
     setPendingKmzImport,
     kmzFileVisibility,
@@ -375,6 +377,7 @@ export const FiberMap: React.FC = () => {
     toggleSelectSegment: state.toggleSelectSegment,
     segmentStoreMap: state.segmentStoreMap,
     getOrCreateSegmentData: state.getOrCreateSegmentData,
+    hydrateSegments: state.hydrateSegments,
     setOverlappingSegments: state.setOverlappingSegments,
     setPendingKmzImport: state.setPendingKmzImport,
     kmzFileVisibility: state.kmzFileVisibility,
@@ -477,8 +480,25 @@ export const FiberMap: React.FC = () => {
       parseKmzToGeoJson('/POP.kmz'),
       parseKmzToGeoJson('/XCC.kmz'),
       parseKmzToGeoJson('/ODP.kmz'),
-      parseKmzToGeoJson('/backbone.kmz')
-    ]).then(([dwdData, popData, xccData, odpData, backboneData]) => {
+      parseKmzToGeoJson('/backbone.kmz'),
+      // Everything ever saved to the backend — merged in below so nodes and
+      // routes from custom KMZ uploads, "Gambar Rute" retraced paths, etc.
+      // survive a refresh instead of only the 5 static files reappearing.
+      // Backend-down shouldn't block the default map from loading at all.
+      listNodes().catch(() => []),
+      listSegments().catch(() => [])
+    ]).then(([dwdDataRaw, popDataRaw, xccDataRaw, odpDataRaw, backboneDataRaw, dbNodes, dbSegments]) => {
+      // A default file the user deleted via the KMZ Files panel stays gone
+      // across refreshes — otherwise it would always reappear here, since
+      // these 5 come from static assets independent of anything in the
+      // database. See utils/deletedKmzFiles.ts.
+      const deletedDefaults = getDeletedDefaultKmzFiles();
+      const dwdData = deletedDefaults.includes('DWD.kmz') ? null : dwdDataRaw;
+      const popData = deletedDefaults.includes('POP.kmz') ? null : popDataRaw;
+      const xccData = deletedDefaults.includes('XCC.kmz') ? null : xccDataRaw;
+      const odpData = deletedDefaults.includes('ODP.kmz') ? null : odpDataRaw;
+      const backboneData = deletedDefaults.includes('backbone.kmz') ? null : backboneDataRaw;
+
       let allFeatures: GeoJSON.Feature[] = [];
       let extractedNodes: NodeData[] = [];
 
@@ -489,10 +509,25 @@ export const FiberMap: React.FC = () => {
       if (dwdData) allFeatures = [...allFeatures, ...tagSourceFile(dwdData.features, 'DWD.kmz')];
       if (backboneData) allFeatures = [...allFeatures, ...tagSourceFile(backboneData.features, 'backbone.kmz')];
 
-      setGeoData({
-        type: 'FeatureCollection',
-        features: allFeatures
-      });
+      // The source KMZ files themselves contain exact duplicate Placemarks
+      // for some cables (same name, same geometry, listed twice) — a data
+      // quality issue in the original files, not something introduced
+      // here. Left alone, both copies hash to the same id, but only one
+      // of them ever gets matched/replaced/colored by the database merge
+      // below (Records only keep the last index per key) — the other sits
+      // there forever as an untouched, uncolored duplicate overlapping the
+      // correct one. Deduping here, before anything else touches
+      // allFeatures, means there's only ever one candidate per id.
+      {
+        const seenLineIds = new Set<string>();
+        allFeatures = allFeatures.filter((f, idx) => {
+          if (f.geometry.type !== 'LineString' && f.geometry.type !== 'MultiLineString') return true;
+          const id = resolveLineFeatureId(f, `SEGMENT CABLE ROUTE #${idx + 1}`);
+          if (seenLineIds.has(id)) return false;
+          seenLineIds.add(id);
+          return true;
+        });
+      }
 
       // 1. Process DWD.kmz (ODC nodes)
       if (dwdData) {
@@ -628,18 +663,121 @@ export const FiberMap: React.FC = () => {
         });
       }
 
-      setNodes(extractedNodes);
-      registerKmzFiles(['DWD.kmz', 'POP.kmz', 'XCC.kmz', 'ODP.kmz', 'backbone.kmz']);
+      // Merge in every node ever saved to the backend. Nodes from the 5
+      // default files already exist in extractedNodes with matching ids
+      // (same deterministic id scheme every load) — for those, take the
+      // DB's name/status (may have been renamed/edited) but keep the
+      // KMZ-derived entry otherwise. Anything else is a node with no KMZ
+      // file backing it anymore (custom upload), added fresh using its
+      // saved sourceFile.
+      const nodesById: Record<string, NodeData> = {};
+      extractedNodes.forEach((n) => { nodesById[n.id] = n; });
+      const extraSourceFiles = new Set<string>();
+      dbNodes.forEach((dbNode) => {
+        const existing = nodesById[dbNode.id];
+        if (existing) {
+          nodesById[dbNode.id] = { ...existing, name: dbNode.name, status: dbNode.status as NodeData['status'] };
+        } else {
+          // Fall back to a real, registered pseudo-file (not left blank)
+          // so nodes saved before source_file existed — or saved through
+          // a path that never had one to send — still show up in the KMZ
+          // Files panel and can actually be hidden/deleted, instead of
+          // silently reappearing on every load with no way to get rid of
+          // them.
+          const sourceFile = dbNode.sourceFile || 'Data Tersimpan';
+          nodesById[dbNode.id] = {
+            id: dbNode.id,
+            name: dbNode.name,
+            coordinates: [dbNode.longitude, dbNode.latitude],
+            status: dbNode.status as NodeData['status'],
+            attenuation: -15,
+            segment: sourceFile,
+            type: dbNode.node_type as NodeData['type'],
+            sourceFile
+          };
+          extraSourceFiles.add(sourceFile);
+        }
+      });
+      const mergedNodes = Object.values(nodesById);
+
+      // Merge in every segment ever saved with a geometry. A segment whose
+      // id matches an existing raw KMZ feature (computed the same way
+      // linesGeoJson does) gets its geometry REPLACED with the saved one —
+      // covers a "Gambar Rute" retrace surviving a refresh — and gets
+      // tagged with an explicit id/sourceFile. Anything else is a route
+      // with no KMZ file backing it (custom upload, Route Builder), added
+      // as a new feature.
+      const rawLineFeatureIds: Record<string, number> = {};
+      allFeatures.forEach((f, idx) => {
+        if (f.geometry.type !== 'LineString' && f.geometry.type !== 'MultiLineString') return;
+        rawLineFeatureIds[resolveLineFeatureId(f, `SEGMENT CABLE ROUTE #${idx + 1}`)] = idx;
+      });
+      dbSegments.forEach((seg) => {
+        if (!seg.geometry || seg.geometry.length < 2) return;
+        const matchIdx = rawLineFeatureIds[seg.id];
+        // Same reasoning as the node fallback above — a segment saved
+        // before source_file existed still needs a real, registered
+        // pseudo-file so it's visible/deletable in the KMZ Files panel
+        // instead of an untraceable, undeletable line reappearing forever.
+        // When replacing an existing default-file feature, prefer ITS
+        // original sourceFile over the generic fallback — otherwise a
+        // segment saved without one (e.g. from before this field existed)
+        // would overwrite a correctly-tagged "backbone.kmz" line with
+        // "Data Tersimpan" on every load.
+        const existingSourceFile = matchIdx !== undefined
+          ? (allFeatures[matchIdx].properties as { sourceFile?: string } | null)?.sourceFile
+          : undefined;
+        const sourceFile = seg.sourceFile || existingSourceFile || 'Data Tersimpan';
+        const feature: GeoJSON.Feature = {
+          type: 'Feature',
+          properties: { name: seg.name, id: seg.id, sourceFile },
+          geometry: { type: 'LineString', coordinates: seg.geometry }
+        };
+        if (matchIdx !== undefined) {
+          allFeatures[matchIdx] = feature;
+        } else {
+          allFeatures.push(feature);
+        }
+        extraSourceFiles.add(sourceFile);
+      });
+
+      setGeoData({ type: 'FeatureCollection', features: allFeatures });
+      setNodes(mergedNodes);
+      const defaultFiles = ['DWD.kmz', 'POP.kmz', 'XCC.kmz', 'ODP.kmz', 'backbone.kmz']
+        .filter((f) => !deletedDefaults.includes(f));
+      registerKmzFiles([...defaultFiles, ...extraSourceFiles]);
+
+      // Populate segmentStoreMap from the same dbSegments used to rebuild
+      // geoData above — the LINE renders correctly from geoData alone, but
+      // its core-capacity COLOR is driven entirely by segmentStoreMap
+      // (see linesGeoJson), which otherwise stays empty until each line is
+      // individually clicked. Without this, every line looks "Belum Diset"
+      // (gray/unset) on every fresh load regardless of its real saved
+      // core capacity.
+      hydrateSegments(dbSegments.map((seg) => ({
+        id: seg.id,
+        name: seg.name,
+        lengthKm: seg.lengthKm ?? 0,
+        customerTrunk: seg.customerTrunk || '',
+        technicalData: seg.technicalData || '',
+        coreCount: seg.coreCount,
+        attenuationRate: seg.attenuationRate,
+        nodeA: seg.nodeA,
+        nodeZ: seg.nodeZ,
+        geometry: seg.geometry,
+        sourceFile: seg.sourceFile,
+        sorFiles: seg.sorFiles
+      })));
 
       // Fit bounds to cover all nodes & lines
-      if (extractedNodes.length > 0 && mapRef.current) {
+      if (mergedNodes.length > 0 && mapRef.current) {
         const map = mapRef.current.getMap();
         const bounds = new maplibregl.LngLatBounds(
-          extractedNodes[0].coordinates,
-          extractedNodes[0].coordinates
+          mergedNodes[0].coordinates,
+          mergedNodes[0].coordinates
         );
-        
-        extractedNodes.forEach(n => bounds.extend(n.coordinates));
+
+        mergedNodes.forEach(n => bounds.extend(n.coordinates));
         map.fitBounds(bounds, { padding: 80, duration: 1200 });
       }
     });
@@ -1160,7 +1298,8 @@ export const FiberMap: React.FC = () => {
                 nodeType: sourceXcc.type,
                 longitude: sourceXcc.coordinates[0],
                 latitude: sourceXcc.coordinates[1],
-                status: sourceXcc.status
+                status: sourceXcc.status,
+                sourceFile: sourceXcc.sourceFile
               },
               targetNodeName: node.name
             }).catch((err) => console.error('Failed to save tray target to backend:', err));
@@ -1293,12 +1432,35 @@ export const FiberMap: React.FC = () => {
                   setGeoData((prev) => {
                     const newFeature: GeoJSON.Feature = {
                       type: 'Feature',
-                      properties: { name: result.name, id: result.id, sourceFile: 'Gambar Rute Custom' },
+                      properties: { name: result.name, id: result.id, sourceFile: result.sourceFile },
                       geometry: { type: 'LineString', coordinates: routeCoords }
                     };
                     const others = (prev?.features || []).filter((f) => resolveLineFeatureId(f, 'SEGMENT CABLE ROUTE') !== result.id);
                     return { type: 'FeatureCollection', features: [...others, newFeature] };
                   });
+                  registerKmzFiles([result.sourceFile || 'Gambar Rute Custom']);
+
+                  // Persist immediately — previously the drawn shape only
+                  // ever reached the backend if the user separately
+                  // reopened the segment modal and clicked "SIMPAN
+                  // PERUBAHAN SEGMENT" afterward. Auto-saving here means
+                  // finishing a draw is enough on its own for it to
+                  // survive a refresh.
+                  const seg = segmentStoreMap[result.id];
+                  if (seg) {
+                    saveSegment(result.id, {
+                      name: seg.name,
+                      lengthKm: seg.lengthKm,
+                      customerTrunk: seg.customerTrunk,
+                      technicalData: seg.technicalData,
+                      coreCount: seg.coreCount,
+                      attenuationRate: seg.attenuationRate,
+                      nodeA: seg.nodeA,
+                      nodeZ: seg.nodeZ,
+                      geometry: routeCoords,
+                      sourceFile: result.sourceFile
+                    }).catch((err) => console.error('Failed to save drawn route to backend:', err));
+                  }
                 }
               }}
               className="px-4 py-1.5 bg-gradient-to-r from-pink-600 via-rose-500 to-fuchsia-600 hover:from-pink-500 hover:to-fuchsia-500 disabled:opacity-50 text-white text-xs font-mono font-extrabold rounded-xl border border-pink-300 transition-all shadow-[0_0_20px_rgba(255,0,127,0.6)]"
@@ -1511,8 +1673,15 @@ export const FiberMap: React.FC = () => {
               const rawName = f.properties?.name || 'SEGMENT CABLE ROUTE';
               const id = (f.properties?.id as string | undefined) || stableSegmentId(rawName, f.geometry);
               const fullFeature = linesGeoJson?.features.find((lf) => lf.properties?.id === id);
-              const distKm = calculateLineDistanceKm(fullFeature?.geometry ?? f.geometry);
-              return getOrCreateSegmentData(id, rawName, distKm);
+              const fullGeometry = fullFeature?.geometry ?? f.geometry;
+              const distKm = calculateLineDistanceKm(fullGeometry);
+              const geometry: [number, number][] | undefined =
+                fullGeometry.type === 'LineString' ? (fullGeometry.coordinates as [number, number][])
+                : fullGeometry.type === 'MultiLineString' ? (fullGeometry.coordinates as [number, number][][]).flat(1)
+                : undefined;
+              const sourceFile = (fullFeature?.properties as { sourceFile?: string } | undefined)?.sourceFile
+                ?? (f.properties as { sourceFile?: string } | null)?.sourceFile;
+              return getOrCreateSegmentData(id, rawName, distKm, geometry, sourceFile);
             });
 
             setOverlappingSegments(candidates);
