@@ -1,3 +1,56 @@
+// Chaikin's Polyline Corner-Cutting Algorithm to smooth KMZ fiber lines along
+// roads. Every place that turns a raw KMZ line feature into a stable id MUST
+// smooth it first with this exact function — the map always renders/hashes
+// the smoothed geometry (see smoothFeatureGeometry below), so hashing raw
+// coordinates anywhere else produces an id that can never be looked up again.
+export function smoothLineCoordinates(coords: [number, number][], iterations = 2): [number, number][] {
+  if (!coords || coords.length <= 2) return coords;
+
+  let current = coords;
+  for (let iter = 0; iter < iterations; iter++) {
+    const smoothed: [number, number][] = [current[0]];
+    for (let i = 0; i < current.length - 1; i++) {
+      const p0 = current[i];
+      const p1 = current[i + 1];
+
+      const q: [number, number] = [
+        0.75 * p0[0] + 0.25 * p1[0],
+        0.75 * p0[1] + 0.25 * p1[1]
+      ];
+
+      const r: [number, number] = [
+        0.25 * p0[0] + 0.75 * p1[0],
+        0.25 * p0[1] + 0.75 * p1[1]
+      ];
+
+      smoothed.push(q);
+      smoothed.push(r);
+    }
+    smoothed.push(current[current.length - 1]);
+    current = smoothed;
+  }
+  return current;
+}
+
+// Smooths a LineString/MultiLineString feature's geometry the same way the
+// map renders it — shared so ANY code computing this feature's stable id
+// (via stableSegmentId) hashes the exact same geometry the map does, rather
+// than the raw pre-smoothing coordinates. Used by both FiberMap.tsx (map
+// rendering/click handling) and KmzImportSetupModal.tsx (saving core
+// capacity set during import) — a route set up during import must resolve
+// to the same id the map looks it up by, or its saved data becomes
+// permanently unreachable ("Belum Diset" forever, no matter what's saved).
+export function smoothFeatureGeometry(geometry: GeoJSON.Geometry): GeoJSON.Geometry {
+  if (geometry.type === 'LineString') {
+    const coords = (geometry as GeoJSON.LineString).coordinates as [number, number][];
+    return { type: 'LineString', coordinates: smoothLineCoordinates(coords, 2) };
+  } else if (geometry.type === 'MultiLineString') {
+    const multi = (geometry as GeoJSON.MultiLineString).coordinates as [number, number][][];
+    return { type: 'MultiLineString', coordinates: multi.map(c => smoothLineCoordinates(c, 2)) };
+  }
+  return geometry;
+}
+
 // djb2 hash, shared by every stable-id helper below.
 function djb2(str: string): string {
   let hash = 5381;

@@ -5,7 +5,7 @@ import { Upload, CheckCircle, Trash2 } from 'lucide-react';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { parseKmzToGeoJson } from '../utils/kmzParser';
 import { fetchRealRoadRoute, type RealRoadRouteResult } from '../utils/realRoadRouter';
-import { stableSegmentId, stableNodeId } from '../utils/segmentId';
+import { stableSegmentId, stableNodeId, smoothLineCoordinates, smoothFeatureGeometry } from '../utils/segmentId';
 import { useAppStore, type NodeData, type RouteCandidateOption, type PendingKmzRoute } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
 import { MapFilterLegendPanel } from './MapFilterLegendPanel';
@@ -21,51 +21,6 @@ const KmzImportSetupModal = lazy(() => import('./KmzImportSetupModal').then(m =>
 
 const DARK_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 const LIGHT_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
-
-// Chaikin's Polyline Corner-Cutting Algorithm to smooth KMZ fiber lines along roads
-function smoothLineCoordinates(coords: [number, number][], iterations = 2): [number, number][] {
-  if (!coords || coords.length <= 2) return coords;
-
-  let current = coords;
-  for (let iter = 0; iter < iterations; iter++) {
-    const smoothed: [number, number][] = [current[0]];
-    for (let i = 0; i < current.length - 1; i++) {
-      const p0 = current[i];
-      const p1 = current[i + 1];
-
-      const q: [number, number] = [
-        0.75 * p0[0] + 0.25 * p1[0],
-        0.75 * p0[1] + 0.25 * p1[1]
-      ];
-
-      const r: [number, number] = [
-        0.25 * p0[0] + 0.75 * p1[0],
-        0.25 * p0[1] + 0.75 * p1[1]
-      ];
-
-      smoothed.push(q);
-      smoothed.push(r);
-    }
-    smoothed.push(current[current.length - 1]);
-    current = smoothed;
-  }
-  return current;
-}
-
-// Smooths a LineString/MultiLineString feature's geometry the same way
-// linesGeoJson does for rendering — shared so any code computing this
-// feature's stable id (via stableSegmentId) hashes the exact same geometry
-// linesGeoJson would, rather than the raw pre-smoothing coordinates.
-function smoothFeatureGeometry(geometry: GeoJSON.Geometry): GeoJSON.Geometry {
-  if (geometry.type === 'LineString') {
-    const coords = (geometry as GeoJSON.LineString).coordinates as [number, number][];
-    return { type: 'LineString', coordinates: smoothLineCoordinates(coords, 2) };
-  } else if (geometry.type === 'MultiLineString') {
-    const multi = (geometry as GeoJSON.MultiLineString).coordinates as [number, number][][];
-    return { type: 'MultiLineString', coordinates: multi.map(c => smoothLineCoordinates(c, 2)) };
-  }
-  return geometry;
-}
 
 // The single authoritative way to resolve a geoData line feature's stable
 // id — prefers an id already stamped on the feature (e.g. a "Gambar Rute"

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Route, CheckCircle2, Server, Radio, Box, Hexagon } from 'lucide-react';
 import { useAppStore, type NodeData } from '../store/useAppStore';
 import { useShallow } from 'zustand/react/shallow';
-import { stableSegmentId } from '../utils/segmentId';
+import { stableSegmentId, smoothFeatureGeometry } from '../utils/segmentId';
 import { saveSegment, renameNode } from '../utils/api';
 import { CoreCapacityPicker } from './CoreCapacityPicker';
 
@@ -80,7 +80,18 @@ export const KmzImportSetupModal: React.FC<KmzImportSetupModalProps> = ({
     }
 
     const routeSaves = pending.routes.map((route, idx) => {
-      const id = stableSegmentId(route.name, route.geometry);
+      // Must hash the SMOOTHED geometry, not the raw KMZ coordinates —
+      // every render/lookup path (resolveLineFeatureId in FiberMap.tsx)
+      // computes a line's stable id from its smoothed geometry, since
+      // that's what's actually drawn on the map. Hashing raw coordinates
+      // here produced an id nothing else would ever compute again: the
+      // core capacity picked in this modal saved correctly to a "ghost"
+      // row in Postgres, but on every future load (including immediately
+      // after confirming) the freshly re-parsed line resolved to a
+      // DIFFERENT id, so segmentStoreMap had no entry for it — the route
+      // rendered "Belum Diset" while an invisible/duplicate record with
+      // the real core capacity sat unreachable underneath it.
+      const id = stableSegmentId(route.name, smoothFeatureGeometry(route.geometry));
       const geometry: [number, number][] | undefined =
         route.geometry.type === 'LineString' ? (route.geometry.coordinates as [number, number][])
         : route.geometry.type === 'MultiLineString' ? (route.geometry.coordinates as [number, number][][]).flat(1)
